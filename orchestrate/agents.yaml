@@ -1,0 +1,212 @@
+# watsonx Orchestrate Agent Definitions
+# 
+# This file defines the AI agents used in the Legacy Codebase Onboarding Accelerator.
+# Each agent has a specific role in analyzing and documenting legacy codebases.
+
+agents:
+  # Architecture Analyzer Agent
+  # Maps the overall structure of the codebase and identifies key dependencies
+  architecture_analyzer:
+    name: "Architecture Analyzer"
+    description: "Maps codebase structure, identifies architectural patterns, and analyzes dependencies"
+    
+    capabilities:
+      - "Analyze directory structure and file organization"
+      - "Identify architectural patterns (MVC, microservices, monolithic, etc.)"
+      - "Map dependencies between modules and components"
+      - "Detect external library usage and versions"
+      - "Generate dependency graphs"
+      - "Identify entry points and main execution flows"
+    
+    inputs:
+      - type: "repository_path"
+        description: "Path to the target codebase"
+        required: true
+      - type: "language_hints"
+        description: "Programming languages used in the codebase"
+        required: false
+    
+    outputs:
+      - type: "architecture_report"
+        format: "markdown"
+        description: "Comprehensive architecture analysis report"
+      - type: "dependency_graph"
+        format: "json"
+        description: "Structured dependency information"
+    
+    model_config:
+      model_id: "ibm/granite-13b-chat-v2"
+      temperature: 0.3
+      max_tokens: 2000
+    
+    priority: 1
+    execution_order: "first"
+
+  # Workflow Extractor Agent
+  # Identifies common development workflows and patterns
+  workflow_extractor:
+    name: "Workflow Extractor"
+    description: "Identifies common development workflows, build processes, and deployment patterns"
+    
+    capabilities:
+      - "Analyze build scripts and configuration files"
+      - "Identify CI/CD pipelines and automation"
+      - "Extract testing workflows and strategies"
+      - "Document deployment procedures"
+      - "Map development environment setup"
+      - "Identify code review and branching strategies"
+    
+    inputs:
+      - type: "repository_path"
+        description: "Path to the target codebase"
+        required: true
+      - type: "architecture_context"
+        description: "Output from architecture_analyzer"
+        required: false
+    
+    outputs:
+      - type: "workflow_guide"
+        format: "markdown"
+        description: "Developer workflow documentation"
+      - type: "setup_instructions"
+        format: "markdown"
+        description: "Environment setup guide"
+    
+    model_config:
+      model_id: "ibm/granite-13b-chat-v2"
+      temperature: 0.4
+      max_tokens: 2000
+    
+    priority: 2
+    execution_order: "second"
+
+  # Documentation Generator Agent
+  # Creates comprehensive onboarding documentation
+  documentation_generator:
+    name: "Documentation Generator"
+    description: "Generates comprehensive onboarding documentation for new developers"
+    
+    capabilities:
+      - "Create getting started guides"
+      - "Generate API documentation"
+      - "Document code conventions and standards"
+      - "Create architecture diagrams and explanations"
+      - "Generate FAQ sections"
+      - "Produce troubleshooting guides"
+    
+    inputs:
+      - type: "repository_path"
+        description: "Path to the target codebase"
+        required: true
+      - type: "architecture_context"
+        description: "Output from architecture_analyzer"
+        required: true
+      - type: "workflow_context"
+        description: "Output from workflow_extractor"
+        required: true
+      - type: "hotspot_context"
+        description: "Output from hotspot_detector"
+        required: false
+    
+    outputs:
+      - type: "onboarding_guide"
+        format: "markdown"
+        description: "Complete onboarding documentation"
+      - type: "api_reference"
+        format: "markdown"
+        description: "API documentation"
+      - type: "faq"
+        format: "markdown"
+        description: "Frequently asked questions"
+    
+    model_config:
+      model_id: "ibm/granite-13b-chat-v2"
+      temperature: 0.5
+      max_tokens: 3000
+    
+    priority: 3
+    execution_order: "third"
+
+  # Hotspot Detector Agent
+  # Identifies frequently changed and complex code areas
+  hotspot_detector:
+    name: "Hotspot Detector"
+    description: "Identifies frequently changed, complex, or problematic code areas that need attention"
+    
+    capabilities:
+      - "Analyze git history for frequently changed files"
+      - "Detect code complexity metrics"
+      - "Identify potential technical debt"
+      - "Find code duplication"
+      - "Detect anti-patterns and code smells"
+      - "Prioritize areas for refactoring"
+    
+    inputs:
+      - type: "repository_path"
+        description: "Path to the target codebase"
+        required: true
+      - type: "git_history"
+        description: "Git commit history data"
+        required: false
+      - type: "architecture_context"
+        description: "Output from architecture_analyzer"
+        required: false
+    
+    outputs:
+      - type: "hotspot_report"
+        format: "markdown"
+        description: "Analysis of code hotspots and problem areas"
+      - type: "refactoring_priorities"
+        format: "json"
+        description: "Prioritized list of refactoring candidates"
+      - type: "complexity_metrics"
+        format: "json"
+        description: "Code complexity measurements"
+    
+    model_config:
+      model_id: "ibm/granite-13b-chat-v2"
+      temperature: 0.3
+      max_tokens: 2000
+    
+    priority: 2
+    execution_order: "parallel_with_workflow"
+
+# Orchestration Configuration
+orchestration:
+  # Execution strategy
+  strategy: "sequential_with_parallel"
+  
+  # Parallel execution groups
+  parallel_groups:
+    - agents: ["workflow_extractor", "hotspot_detector"]
+      wait_for: ["architecture_analyzer"]
+  
+  # Error handling
+  error_handling:
+    retry_attempts: 3
+    retry_delay_seconds: 5
+    continue_on_error: false
+  
+  # Output aggregation
+  output_aggregation:
+    enabled: true
+    format: "markdown"
+    output_path: "docs/onboarding/generated"
+
+# Integration Settings
+integrations:
+  watsonx_ai:
+    enabled: true
+    default_model: "ibm/granite-13b-chat-v2"
+    
+  mcp_servers:
+    enabled: true
+    servers:
+      - name: "git-analyzer"
+        type: "git"
+      - name: "code-parser"
+        type: "code-analysis"
+      - name: "doc-generator"
+        type: "documentation"
+
+# Made with Bob

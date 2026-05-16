@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./build",
+    "rootDir": "."
+  },
+  "include": [
+    "server.ts"
+  ]
+}
+
+// Made with Bob
