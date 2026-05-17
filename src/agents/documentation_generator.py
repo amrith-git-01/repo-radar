@@ -131,11 +131,8 @@ class DocumentationGenerator(BaseAgent):
         lines.extend(
             [
                 "\n## Getting started\n\n",
-                "```bash\n",
-                "pip install -r requirements.txt\n",
-                "python src/main.py\n",
-                "pytest tests/\n",
-                "```\n\n",
+                "Review [WORKFLOWS.md](WORKFLOWS.md) for setup, run, and test steps discovered from repository files.\n\n",
+                "> Not found in MCP data: a fully verified one-command setup/run/test sequence for this repository.\n\n",
                 "## First week checklist\n\n",
                 "- [ ] Read this guide and [ARCHITECTURE.md](ARCHITECTURE.md)\n",
                 "- [ ] Run the app and tests locally\n",
@@ -194,7 +191,15 @@ class DocumentationGenerator(BaseAgent):
         )
 
         prompt = self.format_prompt(
-            """You are creating a comprehensive onboarding guide for new developers joining a project. Create a welcoming, informative guide.
+            """You are creating a comprehensive onboarding guide for new developers joining a project. Create a welcoming, informative guide grounded in the provided agent outputs.
+
+Quality rules:
+- Use concrete repo paths, commands, dependencies, diagrams, and hotspots from the data below.
+- Do not invent setup steps, APIs, architecture details, deployment workflows, team contacts, or owners.
+- If something is not present in the data, write "Not found in MCP data" and suggest what to inspect next.
+- Make the output polished Markdown: clear headings, tables where useful, checklists, code fences, and cross-links.
+- Preserve every Mermaid code block from the diagram data exactly.
+- The guide should be detailed enough for a new developer's first week.
 
 ## Project Overview
 - Repository: {repo_path}
@@ -335,7 +340,13 @@ We're excited to have you contribute! Please read through this guide and the lin
         dependencies = architecture_result.get('dependencies', [])
         
         prompt = self.format_prompt(
-            """You are creating API reference documentation for a codebase. Generate comprehensive API documentation.
+            """You are creating API reference documentation for a codebase. Generate comprehensive API documentation grounded in the provided analysis.
+
+Quality rules:
+- Include only APIs, modules, configuration, and examples supported by the provided entry point/dependency data.
+- Use exact file paths and dependency names.
+- If signatures or public interfaces are not available, say "Not found in MCP data" and point to the file to inspect.
+- Use polished Markdown with tables for modules/functions/configuration.
 
 ## Project Information
 - Repository: {repo_path}
@@ -405,6 +416,12 @@ Be technical and specific. Include code examples where appropriate.""",
         
         prompt = self.format_prompt(
             """You are creating a FAQ (Frequently Asked Questions) document for developers working on a codebase.
+
+Quality rules:
+- Answer from the provided architecture, workflow, and hotspot context only.
+- Include exact file paths and commands when available.
+- Say "Not found in MCP data" for missing setup, deployment, ownership, or process details.
+- Keep answers practical, concise, and useful for first-week onboarding.
 
 ## Project Context
 - Primary Language: {primary_lang}

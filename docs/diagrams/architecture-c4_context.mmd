@@ -1,6 +1,0 @@
-graph TB
-  User[User] -->|Uses| WebApp[PetClinic Web Application]
-  Vet[Veterinarian] -->|Uses| WebApp
-  Owner[Pet Owner] -->|Uses| WebApp
-  WebApp -->|Reads/Writes| DB[(Relational Database)]
-  WebApp -->|Calls| External[External Services (e.g., Email, SMS)]

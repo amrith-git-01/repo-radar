@@ -7,12 +7,13 @@
 import * as md from './markdown.js';
 
 /**
- * Get onboarding guide template
+ * Get onboarding guide template (fallback when AI generation fails)
  */
 export function getOnboardingTemplate(projectName: string = 'Project'): string {
+  const today = new Date().toISOString().split('T')[0];
   return `# ${projectName} - Onboarding Guide
 
-Welcome to the ${projectName} codebase! This guide will help you get started with understanding and contributing to the project.
+> **Note:** This document was generated using a fallback template because AI-powered generation was unavailable or failed. The content below is a structural outline only. Sections marked with an asterisk (*) could not be populated from MCP data. Run the documentation-generator with valid watsonx.ai credentials to regenerate with repo-specific content.
 
 ## Table of Contents
 
@@ -26,162 +27,96 @@ Welcome to the ${projectName} codebase! This guide will help you get started wit
 
 ## Project Overview
 
-### Description
+### Description *
 
-[Brief description of what this project does]
+_Not generated: AI generation failed or MCP data was unavailable. Verify WatsonX credentials and MCP server builds, then regenerate._
 
-### Key Technologies
+### Key Technologies *
 
-- Technology 1
-- Technology 2
-- Technology 3
+_Not found in MCP data. Inspect \`package.json\`, \`requirements.txt\`, \`pom.xml\`, or similar dependency files in the repository root._
 
-### Architecture Overview
+### Architecture Overview *
 
-[High-level architecture description]
+_Not found in MCP data. Run the code-analyzer MCP server with a valid \`REPO_PATH\` to generate architecture insights._
 
 ## Getting Started
 
-### Prerequisites
+### Prerequisites *
 
-- Requirement 1
-- Requirement 2
-- Requirement 3
+_Not found in MCP data. Check the repository's \`README.md\`, \`CONTRIBUTING.md\`, or existing \`docs/\` files for requirements._
 
-### Installation
+### Installation *
 
 \`\`\`bash
 # Clone the repository
-git clone [repository-url]
+git clone <repository-url>
 
 # Install dependencies
-[installation commands]
+# Not found in MCP data - check package.json, requirements.txt, or Makefile for commands
 \`\`\`
 
-### Configuration
+### Configuration *
 
-[Configuration instructions]
+_Not found in MCP data. Look for \`.env.example\`, \`config/\` directory, or environment variable documentation in the repo._
 
-### Running the Project
+### Running the Project *
 
 \`\`\`bash
-# Development mode
-[run command]
-
-# Production mode
-[production command]
+# Run command
+# Not found in MCP data - inspect README.md, package.json scripts, or Procfile for commands
 \`\`\`
 
 ## Codebase Structure
 
-### Directory Organization
+### Directory Organization *
 
-\`\`\`
-project-root/
-├── src/           # Source code
-├── tests/         # Test files
-├── docs/          # Documentation
-└── config/        # Configuration files
-\`\`\`
+_Not found in MCP data. Run the code-analyzer MCP server with \`analyze_structure\` to generate an accurate directory tree._
 
-### Key Modules
+### Key Modules *
 
-- **Module 1**: Description
-- **Module 2**: Description
-- **Module 3**: Description
+_Not found in MCP data. Use code-analyzer to scan the repository structure and identify key modules._
 
-### Entry Points
+### Entry Points *
 
-[Description of main entry points]
+_Not found in MCP data. Run code-analyzer's \`find_entry_points\` tool to discover main entry points._
 
-## Development Workflow
+## Development Workflow *
 
-### Making Changes
+_Not found in MCP data. Check the repository for \`CONTRIBUTING.md\`, \`WORKFLOWS.md\`, \`.github/workflows/\`, or similar files describing development processes._
 
-1. Create a feature branch
-2. Make your changes
-3. Write/update tests
-4. Submit a pull request
+## Key Concepts *
 
-### Testing
+_Not found in MCP data. Review the codebase structure and architecture diagrams (once generated) to identify design patterns, core business logic locations, and data flow._
 
-\`\`\`bash
-# Run tests
-[test command]
-\`\`\`
+## Common Tasks *
 
-### Code Review Process
-
-[Code review guidelines]
-
-## Key Concepts
-
-### Design Patterns
-
-[Important design patterns used]
-
-### Core Business Logic
-
-[Where to find core logic]
-
-### Data Flow
-
-[How data flows through the system]
-
-## Common Tasks
-
-### Adding a New Feature
-
-1. Step 1
-2. Step 2
-3. Step 3
-
-### Fixing a Bug
-
-1. Step 1
-2. Step 2
-3. Step 3
-
-### Running Tests
-
-\`\`\`bash
-[test commands]
-\`\`\`
-
-### Debugging
-
-[Debugging tips and tools]
+_Not found in MCP data. After generating repo-specific analysis with valid MCP servers, this section will include concrete commands and file paths._
 
 ## Resources
 
-### Important Files
+### Important Files *
 
-- \`file1.ext\` - Description
-- \`file2.ext\` - Description
+_Not found in MCP data. Run code-analyzer's \`analyze_structure\` and \`find_entry_points\` to identify critical files._
 
-### External Documentation
+### External Documentation *
 
-- [Link 1](url)
-- [Link 2](url)
-
-### Team Contacts
-
-- Role 1: Contact info
-- Role 2: Contact info
+_Not found in MCP data. Check the repository's \`README.md\` and existing \`docs/\` directory for linked resources._
 
 ---
 
-*Last updated: ${new Date().toISOString().split('T')[0]}*
+*Last updated: ${today}*  \\
+*Generated via fallback template (AI generation was unavailable)*
 `;
 }
 
 /**
- * Get API reference template
+ * Get API reference template (fallback when AI generation fails)
  */
 export function getAPIReferenceTemplate(projectName: string = 'Project'): string {
+  const today = new Date().toISOString().split('T')[0];
   return `# ${projectName} - API Reference
 
-Complete API reference for the ${projectName} codebase.
+> **Note:** This document was generated using a fallback template because AI-powered generation was unavailable or failed. Sections marked with an asterisk (*) could not be populated from MCP data. Regenerate with valid watsonx.ai credentials to produce repo-specific content.
 
 ## Table of Contents
 
@@ -193,122 +128,49 @@ Complete API reference for the ${projectName} codebase.
 - [Error Handling](#error-handling)
 - [Examples](#examples)
 
-## Overview
+## Overview *
 
-### Purpose
+_Not generated: AI generation failed or MCP data was unavailable. Verify WatsonX credentials and MCP server builds, then regenerate._
 
-[Description of the API/codebase purpose]
+## Core APIs *
 
-### Main Components
+_Not found in MCP data. Run code-analyzer's \`analyze_structure\` and \`find_entry_points\` tools to discover the repository's public APIs and functions._
 
-- Component 1
-- Component 2
-- Component 3
+## Module Documentation *
 
-## Core APIs
+_Not found in MCP data. Use the code-analyzer MCP server to scan the repository structure and identify major modules._
 
-### Function/Class Name
+## Data Structures *
 
-**Description**: [What it does]
+_Not found in MCP data. Review key source files in the repository to identify important data types, interfaces, and models._
 
-**Signature**:
-\`\`\`typescript
-function functionName(param1: Type1, param2: Type2): ReturnType
-\`\`\`
+## Configuration *
 
-**Parameters**:
-- \`param1\` (Type1): Description
-- \`param2\` (Type2): Description
+_Not found in MCP data. Look for \`.env.example\`, \`config/\` files, or environment variable documentation in the repository._
 
-**Returns**: Description of return value
+## Error Handling *
 
-**Example**:
-\`\`\`typescript
-const result = functionName(value1, value2);
-\`\`\`
+_Not found in MCP data. Inspect the source code for error classes, exception handlers, or error code enums._
 
-## Module Documentation
+## Examples *
 
-### Module Name
-
-**Purpose**: [Module purpose]
-
-**Public Interface**:
-- Function 1
-- Function 2
-- Class 1
-
-**Usage**:
-\`\`\`typescript
-import { Function1 } from 'module-name';
-\`\`\`
-
-## Data Structures
-
-### Structure Name
-
-\`\`\`typescript
-interface StructureName {
-  field1: Type1;
-  field2: Type2;
-}
-\`\`\`
-
-**Fields**:
-- \`field1\`: Description
-- \`field2\`: Description
-
-## Configuration
-
-### Environment Variables
-
-| Variable | Type | Description | Default |
-|----------|------|-------------|---------|
-| VAR_NAME | string | Description | default |
-
-### Config Files
-
-[Configuration file descriptions]
-
-## Error Handling
-
-### Error Codes
-
-| Code | Description | Resolution |
-|------|-------------|------------|
-| ERR_001 | Error description | How to fix |
-
-### Exception Types
-
-[Exception type descriptions]
-
-## Examples
-
-### Common Usage Pattern
-
-\`\`\`typescript
-// Example code
-\`\`\`
-
-### Integration Example
-
-\`\`\`typescript
-// Integration example
-\`\`\`
+_Not found in MCP data. After generating repo-specific analysis with valid MCP servers and WatsonX credentials, this section will include code examples._
 
 ---
 
-*Last updated: ${new Date().toISOString().split('T')[0]}*
+*Last updated: ${today}*  \\
+*Generated via fallback template (AI generation was unavailable)*
 `;
 }
 
 /**
- * Get FAQ template
+ * Get FAQ template (fallback when AI generation fails)
  */
 export function getFAQTemplate(projectName: string = 'Project'): string {
+  const today = new Date().toISOString().split('T')[0];
   return `# ${projectName} - Frequently Asked Questions
 
-Common questions and answers about the ${projectName} codebase.
+> **Note:** This document was generated using a fallback template because AI-powered generation was unavailable or failed. Sections marked with an asterisk (*) could not be populated from MCP data. Regenerate with valid watsonx.ai credentials to produce repo-specific content.
 
 ## Table of Contents
 
@@ -322,139 +184,96 @@ Common questions and answers about the ${projectName} codebase.
 
 ## General Questions
 
-### What is this project?
+### What is this project? *
 
-[Answer]
+_Not generated: AI generation failed or MCP data was unavailable. Verify WatsonX credentials and MCP server builds, then regenerate._
 
-### What problem does it solve?
+### What problem does it solve? *
 
-[Answer]
+_Not found in MCP data. Review the repository's \`README.md\` and existing documentation for project context._
 
-### Who maintains it?
+### Who maintains it? *
 
-[Answer]
+_Not found in MCP data. Run the git-analyzer MCP server's \`get_contributors\` tool to identify active maintainers, or check the repository's \`CODEOWNERS\` file._
 
-### What's the project history?
+### What's the project history? *
 
-[Answer]
+_Not found in MCP data. Use \`git log\` or the git-analyzer MCP server to examine commit history._
 
 ## Setup and Installation
 
-### How do I set up the development environment?
+### How do I set up the development environment? *
 
-[Answer with steps]
+_Not found in MCP data. Check \`README.md\`, \`CONTRIBUTING.md\`, \`SETUP.md\`, or existing \`docs/\` files in the repository._
 
-### What are the system requirements?
+### What are the system requirements? *
 
-[Answer]
+_Not found in MCP data. Inspect \`package.json\` (engines field), \`requirements.txt\`, \`.nvmrc\`, \`Dockerfile\`, or similar files for version requirements._
 
-### What are common installation issues?
+### What are common installation issues? *
 
-**Issue**: [Description]
-**Solution**: [How to fix]
+_Not found in MCP data. After successfully setting up the environment, consider documenting issues in a \`TROUBLESHOOTING.md\` file._
 
-### How do I configure the application?
+### How do I configure the application? *
 
-[Answer]
+_Not found in MCP data. Look for \`.env.example\`, \`config/\` directory, or environment variable documentation._
 
 ## Development Questions
 
-### Where do I start reading the code?
+### Where do I start reading the code? *
 
-[Answer with file paths]
+_Not found in MCP data. Run code-analyzer's \`find_entry_points\` and \`analyze_structure\` tools to identify main entry points and directory organization._
 
-### How is the code organized?
+### How is the code organized? *
 
-[Answer]
+_Not found in MCP data. Use the code-analyzer MCP server to scan the directory structure and identify module boundaries._
 
-### What are the main entry points?
+### What are the main entry points? *
 
-[Answer]
+_Not found in MCP data. Run code-analyzer's \`find_entry_points\` tool to discover main entry points._
 
-### How do I run tests?
+### How do I run tests? *
 
-\`\`\`bash
-[test command]
-\`\`\`
+_Not found in MCP data. Check \`package.json\` (scripts.test), \`Makefile\`, \`pytest.ini\`, \`.github/workflows/\`, or similar files for test commands._
 
-### How do I debug issues?
+### How do I debug issues? *
 
-[Answer]
+_Not found in MCP data. Look for debugging configuration files (\`.vscode/launch.json\`, debugger setup) or developer documentation in the repository._
 
 ## Architecture Questions
 
-### What's the overall architecture?
+### What's the overall architecture? *
 
-[Answer]
+_Not found in MCP data. Run code-analyzer's \`analyze_structure\` and \`analyze_dependencies\` tools, then review generated ARCHITECTURE.md once available._
 
-### What design patterns are used?
+### What design patterns are used? *
 
-[Answer]
+_Not found in MCP data. Review the source code structure and module organization to identify patterns (MVC, layered, microservices, etc.)._
 
-### How does data flow through the system?
+### How does data flow through the system? *
 
-[Answer]
+_Not found in MCP data. Trace entry points through dependency calls using code-analyzer results once MCP servers are running with a valid repo path._
 
-### What are the key dependencies?
+### What are the key dependencies? *
 
-[Answer]
+_Not found in MCP data. Run code-analyzer's \`analyze_dependencies\` tool to extract dependency information from \`package.json\`, \`requirements.txt\`, \`pom.xml\`, etc._
 
-## Common Issues
+## Common Issues *
 
-### Why does X fail?
+_Not found in MCP data. Install and configure the repository locally first, then document common issues as they are encountered. Check existing \`docs/\` files or \`TROUBLESHOOTING.md\` for any pre-existing issue documentation._
 
-**Cause**: [Explanation]
-**Solution**: [How to fix]
+## Contributing *
 
-### How do I fix Y error?
+_Not found in MCP data. Check the repository for \`CONTRIBUTING.md\`, \`CODE_OF_CONDUCT.md\`, \`PULL_REQUEST_TEMPLATE.md\`, or \`.github/\` directory for contribution guidelines._
 
-**Error**: [Error message]
-**Solution**: [How to fix]
+## Deployment and Operations *
 
-### What causes Z behavior?
-
-**Explanation**: [Why it happens]
-**Solution**: [How to handle it]
-
-## Contributing
-
-### How do I contribute?
-
-[Answer with steps]
-
-### What's the code review process?
-
-[Answer]
-
-### What are the coding standards?
-
-[Answer]
-
-### How do I submit changes?
-
-[Answer]
-
-## Deployment and Operations
-
-### How is the application deployed?
-
-[Answer]
-
-### What are the production requirements?
-
-[Answer]
-
-### How do I monitor the application?
-
-[Answer]
-
-### What are common operational issues?
-
-[Answer]
+_Not found in MCP data. Check for \`Dockerfile\`, \`docker-compose.yml\`, \`.github/workflows/deploy.yml\`, \`Jenkinsfile\`, \`helm/\` directory, or cloud platform configuration files for deployment information._
 
 ---
 
-*Last updated: ${new Date().toISOString().split('T')[0]}*
+*Last updated: ${today}*  \\
+*Generated via fallback template (AI generation was unavailable)*
 `;
 }
 

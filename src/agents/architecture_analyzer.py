@@ -185,7 +185,14 @@ class ArchitectureAnalyzer(BaseAgent):
             else ""
         )
         prompt = self.format_prompt(
-            """You are a senior software architect. Return ONLY valid JSON (no prose).{json_suffix}
+            """You are a senior software architect creating MCP-grounded onboarding material. Return ONLY valid JSON (no prose).{json_suffix}
+
+## Quality Rules
+- Use only the MCP data below. Do not invent architecture patterns, services, frameworks, data stores, or entry points.
+- Cite concrete repo paths and dependency names in summary_markdown whenever possible.
+- If the architecture pattern is unclear, set "pattern" to "unknown" and explain what evidence is missing.
+- Produce polished, GitHub-compatible Mermaid. Keep diagrams readable and avoid nodes that are not supported by the data.
+- Make the output useful for a new developer's first week, not a generic architecture essay.
 
 ## Data
 Structure summary — total files: {total_files}, types: {file_types}, primary: {primary_lang}

@@ -14,11 +14,22 @@ export interface PromptContext {
   complexity?: unknown;
 }
 
+function qualityRules(documentName: string): string {
+  return `Quality rules for ${documentName}:
+- Ground every claim in the provided MCP data. Use real file paths, module names, commands, dependencies, entry points, hotspots, contributors, and metrics when present.
+- Do not invent setup commands, APIs, architecture patterns, deployment details, owners, team contacts, or external links. If evidence is missing, write "Not found in MCP data" and suggest the exact thing to inspect next.
+- Make the document detailed enough for a new developer's first week, not just a high-level summary.
+- Make the Markdown polished: concise overview, clear heading hierarchy, tables for scans/comparisons, checklists for tasks, fenced code blocks for commands, and cross-links to companion docs.
+- Prefer actionable guidance over generic advice. Explain why a file or workflow matters.`;
+}
+
 /**
  * Generate onboarding guide prompt
  */
 export function getOnboardingGuidePrompt(context: PromptContext): string {
-  return `You are a technical documentation expert. Generate a comprehensive onboarding guide for a legacy codebase.
+  return `You are a senior developer advocate and technical documentation expert. Generate a repo-specific onboarding guide for a legacy codebase using only the MCP evidence below.
+
+${qualityRules('ONBOARDING_GUIDE.md')}
 
 Project Information:
 ${context.projectName ? `Project Name: ${context.projectName}` : ''}
@@ -35,29 +46,34 @@ ${JSON.stringify(context.dependencies, null, 2)}
 Code Hotspots (frequently changed files):
 ${JSON.stringify(context.hotspots, null, 2)}
 
+Contributors:
+${JSON.stringify(context.contributors, null, 2)}
+
 Create an ONBOARDING_GUIDE.md that includes:
 
-1. **Project Overview**
-   - Brief description of the project
+1. **Executive Summary**
+   - What this repo appears to do, with confidence level
    - Key technologies and frameworks used
-   - Architecture overview
+   - Top 3 files or directories to read first
 
 2. **Getting Started**
-   - Prerequisites and system requirements
-   - Installation steps
-   - Configuration guide
-   - How to run the project
+   - Prerequisites and system requirements found in MCP data
+   - Installation, configuration, run, and test commands found in MCP data
+   - Verification checklist
+   - Explicit "Not found in MCP data" notes for missing setup facts
 
 3. **Codebase Structure**
    - Directory organization
    - Key modules and their purposes
    - Entry points and main execution flows
+   - Table of important paths and why they matter
 
 4. **Development Workflow**
    - How to make changes
    - Testing procedures
    - Code review process
    - Deployment process
+   - Only include commands/processes supported by the MCP data
 
 5. **Key Concepts**
    - Important design patterns used
@@ -69,20 +85,32 @@ Create an ONBOARDING_GUIDE.md that includes:
    - How to fix bugs
    - How to run tests
    - How to debug issues
+   - Include exact files/commands when available
 
-7. **Resources**
+7. **Risk Areas and Hotspots**
+   - Frequently changed or complex files
+   - Why a new developer should be careful there
+   - First safe investigation steps
+
+8. **First Week Checklist**
+   - Day 1, Days 2-3, Days 4-5, first PR
+   - Each item should reference a file, command, or generated companion doc where possible
+
+9. **Resources**
    - Important files to review first
-   - External documentation links
-   - Team contacts
+   - Cross-link to API_REFERENCE.md and FAQ.md
+   - Any missing information to ask the team about
 
-Format the output as a well-structured Markdown document with clear headings, code examples where appropriate, and actionable guidance for new developers.`;
+Format the output as polished Markdown that looks good in Bob and GitHub. Include tables, checklists, and code blocks where they improve scanning.`;
 }
 
 /**
  * Generate API reference prompt
  */
 export function getAPIReferencePrompt(context: PromptContext): string {
-  return `You are a technical documentation expert. Generate a comprehensive API reference for a codebase.
+  return `You are a senior API documentation writer. Generate a repo-specific API reference using only the MCP evidence below.
+
+${qualityRules('API_REFERENCE.md')}
 
 Codebase Structure:
 ${JSON.stringify(context.structure, null, 2)}
@@ -101,6 +129,7 @@ Create an API_REFERENCE.md that includes:
 1. **Overview**
    - Purpose of the API/codebase
    - Main components and modules
+   - Scope and evidence limitations
 
 2. **Core APIs and Functions**
    - List all major functions, classes, and methods
@@ -110,11 +139,13 @@ Create an API_REFERENCE.md that includes:
      - Parameters and return values
      - Usage examples
      - Related functions
+   - If signatures are not available in MCP data, say so and reference the likely file to inspect
 
 3. **Module Documentation**
    - Document each major module/package
    - Explain its role in the system
    - List its public interfaces
+   - Include a path-based module table
 
 4. **Data Structures**
    - Key data types and structures
@@ -135,14 +166,16 @@ Create an API_REFERENCE.md that includes:
    - Code snippets
    - Integration examples
 
-Format the output as a well-structured Markdown document with clear sections, code blocks, and tables where appropriate.`;
+Format the output as polished Markdown with tables for modules/endpoints/functions and fenced code blocks only when supported by MCP evidence.`;
 }
 
 /**
  * Generate FAQ prompt
  */
 export function getFAQPrompt(context: PromptContext): string {
-  return `You are a technical documentation expert. Generate a comprehensive FAQ document for a legacy codebase.
+  return `You are a senior onboarding writer. Generate a practical FAQ for new developers using only the MCP evidence below.
+
+${qualityRules('FAQ.md')}
 
 Codebase Structure:
 ${JSON.stringify(context.structure, null, 2)}
@@ -166,6 +199,7 @@ Create an FAQ.md that includes:
    - What problem does it solve?
    - Who maintains it?
    - What's the project history?
+   - Mark project history/ownership as "Not found in MCP data" unless contributor data proves it
 
 2. **Setup and Installation**
    - How do I set up the development environment?
@@ -191,6 +225,7 @@ Create an FAQ.md that includes:
    - How do I fix Y error?
    - What causes Z behavior?
    - Performance issues and solutions
+   - Phrase answers as likely investigation paths unless MCP data proves the cause
 
 6. **Contributing**
    - How do I contribute?
@@ -204,7 +239,7 @@ Create an FAQ.md that includes:
    - How do I monitor the application?
    - What are common operational issues?
 
-Format each question and answer clearly. Use code examples where helpful. Make answers concise but complete.`;
+Format each question and answer clearly. Use tables for quick lookup, include exact commands/paths when available, and keep answers concise but complete.`;
 }
 
 /**
@@ -268,11 +303,17 @@ Evaluate the document on:
    - Would this help a new developer?
    - Are there actionable instructions?
    - Are examples practical?
+   - Does it include a first-week path through the codebase?
 
 5. **Formatting**
    - Is Markdown formatting correct?
    - Are headings properly structured?
    - Are code blocks formatted correctly?
+
+6. **MCP Grounding**
+   - Does the document cite concrete repo paths, commands, entry points, dependencies, and hotspots where available?
+   - Does it clearly say "Not found in MCP data" instead of inventing missing facts?
+   - Does it avoid generic filler that could apply to any repo?
 
 Provide a JSON response with:
 {

@@ -197,7 +197,14 @@ class WorkflowExtractor(BaseAgent):
             else ""
         )
         prompt = self.format_prompt(
-            """You are a technical writer. Return ONLY valid JSON (no prose).{json_suffix}
+            """You are a technical writer creating MCP-grounded onboarding workflow docs. Return ONLY valid JSON (no prose).{json_suffix}
+
+## Quality Rules
+- Use only the workflow files and contents below.
+- Include exact commands, scripts, config file names, and environment hints only when they appear in the provided data.
+- If setup, tests, CI/CD, or deployment are not present, include a workflow step that says "Not found in MCP data" with the next file to inspect.
+- Make steps specific enough for a new developer to follow during the first week.
+- Use valid Mermaid sequenceDiagram syntax and keep participant names grounded in discovered files/processes.
 
 ## Available Workflow Files
 {workflow_files}
@@ -238,7 +245,12 @@ Use valid Mermaid sequenceDiagram syntax. Escape newlines as \\n in JSON strings
         setup_info = self._extract_setup_info(workflows)
         
         prompt = self.format_prompt(
-            """You are creating setup instructions for new developers. Based on the project files, create step-by-step setup instructions.
+            """You are creating setup instructions for new developers. Use only the project evidence below and be explicit about missing data.
+
+Quality rules:
+- Include exact commands only when they appear in project files.
+- Say "Not found in MCP data" for unknown prerequisites, env vars, IDE settings, or first-run commands.
+- Organize the result as polished Markdown with checklists and code fences.
 
 ## Project Information
 {setup_info}

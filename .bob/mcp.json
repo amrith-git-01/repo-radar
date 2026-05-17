@@ -2,23 +2,50 @@
   "mcpServers": {
     "code-analyzer": {
       "command": "node",
-      "args": ["dev-ramp/src/mcp-servers/code-analyzer/build/server.js"],
-      "env": { "REPO_PATH": "REPLACE_WITH_TARGET_REPO" }
+      "args": [
+        "C:/Users/vishn/Desktop/Programs/dev-ramp/src/mcp-servers/code-analyzer/build/server.js"
+      ],
+      "env": {
+        "REPO_PATH": "C:/Users/vishn/Desktop/Programs/dev-ramp/test_repo"
+      },
+      "alwaysAllow": [
+        "get_complexity_metrics",
+        "analyze_structure",
+        "find_entry_points",
+        "analyze_dependencies"
+      ]
     },
     "git-analyzer": {
       "command": "node",
-      "args": ["dev-ramp/src/mcp-servers/git-analyzer/build/server.js"],
-      "env": { "REPO_PATH": "REPLACE_WITH_TARGET_REPO" }
+      "args": [
+        "C:/Users/vishn/Desktop/Programs/dev-ramp/src/mcp-servers/git-analyzer/build/server.js"
+      ],
+      "env": {
+        "REPO_PATH": "C:/Users/vishn/Desktop/Programs/dev-ramp/test_repo"
+      },
+      "alwaysAllow": [
+        "get_contributors",
+        "get_file_history",
+        "get_hotspot_files"
+      ]
     },
     "documentation-generator": {
       "command": "node",
       "args": [
-        "dev-ramp/src/mcp-servers/documentation-generator/build/server.js"
+        "C:/Users/vishn/Desktop/Programs/dev-ramp/src/mcp-servers/documentation-generator/build/server.js"
       ],
       "env": {
-        "REPO_PATH": "dev-ramp/test_repo",
-        "OUTPUT_DIR": "dev-ramp/docs"
-      }
+        "REPO_PATH": "C:/Users/vishn/Desktop/Programs/dev-ramp/test_repo",
+        "OUTPUT_DIR": "C:/Users/vishn/Desktop/Programs/dev-ramp/docs/onboarding"
+      },
+      "alwaysAllow": [
+        "generate_onboarding_package",
+        "generate_api_reference",
+        "generate_faq",
+        "regenerate_section",
+        "validate_documentation",
+        "generate_onboarding_guide"
+      ]
     }
   }
 }

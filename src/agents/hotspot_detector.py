@@ -258,7 +258,14 @@ class HotspotDetector(BaseAgent):
             else ""
         )
         prompt = self.format_prompt(
-            """You are a senior software engineer. Return ONLY valid JSON (no prose).{json_suffix}
+            """You are a senior software engineer creating MCP-grounded hotspot guidance for onboarding. Return ONLY valid JSON (no prose).{json_suffix}
+
+## Quality Rules
+- Explain risk using only the git and complexity metrics below: commits, authors, change frequency, complexity, lines, and maintainability.
+- Do not claim a file has bugs, duplication, ownership problems, or architectural debt unless the provided metrics support that claim.
+- Advice must be actionable and conservative for a new developer: what to inspect, what tests to add, and how to change safely.
+- Use exact file paths from the hotspot data.
+- Mermaid must be GitHub-compatible and readable.
 
 ## Critical Hotspots (High Risk Files)
 {critical_hotspots}

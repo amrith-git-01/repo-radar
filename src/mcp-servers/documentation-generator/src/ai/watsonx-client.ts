@@ -1,10 +1,18 @@
 /**
  * WatsonX AI Client
- * 
- * Handles communication with IBM watsonx.ai for content generation
+ *
+ * Handles communication with IBM watsonx.ai for content generation.
+ * Uses the official @ibm-cloud/watsonx-ai SDK which handles IAM token
+ * exchange and refresh internally.
+ *
+ * The SDK expects one of these env var setups:
+ *   WATSONX_AI_AUTH_TYPE=iam
+ *   WATSONX_AI_APIKEY=<your-api-key>
+ *
+ * We set them programmatically before creating the service instance.
  */
 
-import * as https from 'https';
+import { WatsonXAI } from '@ibm-cloud/watsonx-ai';
 
 interface WatsonXConfig {
   apiKey: string;
@@ -20,125 +28,56 @@ interface GenerationParams {
   maxTokens?: number;
   temperature?: number;
   topP?: number;
-  stopSequences?: string[];
-}
-
-interface WatsonXResponse {
-  results: Array<{
-    generated_text: string;
-    generated_token_count: number;
-    input_token_count: number;
-  }>;
 }
 
 export class WatsonXClient {
+  private service: WatsonXAI;
   private config: Required<WatsonXConfig>;
-  private baseUrl = 'https://us-south.ml.cloud.ibm.com';
 
   constructor(config: WatsonXConfig) {
     this.config = {
       apiKey: config.apiKey,
       projectId: config.projectId,
-      modelId: config.modelId || 'ibm/granite-13b-chat-v2',
+      modelId: config.modelId || 'openai/gpt-oss-120b',
       maxTokens: config.maxTokens || 2000,
       temperature: config.temperature || 0.7,
       topP: config.topP || 0.9,
     };
+
+    // Set SDK authentication env vars the SDK expects
+    process.env['WATSONX_AI_AUTH_TYPE'] = 'iam';
+    process.env['WATSONX_AI_APIKEY'] = this.config.apiKey;
+
+    this.service = new WatsonXAI({
+      version: '2024-05-31',
+      serviceUrl: 'https://us-south.ml.cloud.ibm.com',
+    });
   }
 
   /**
-   * Generate text using watsonx.ai
+   * Generate text using watsonx.ai chat completions API via the official SDK
    */
   async generate(params: GenerationParams): Promise<string> {
-    const requestBody = {
-      input: params.prompt,
-      parameters: {
-        max_new_tokens: params.maxTokens || this.config.maxTokens,
-        temperature: params.temperature || this.config.temperature,
-        top_p: params.topP || this.config.topP,
-        stop_sequences: params.stopSequences || [],
-      },
-      model_id: this.config.modelId,
-      project_id: this.config.projectId,
-    };
-
-    try {
-      const response = await this.makeRequest('/ml/v1/text/generation?version=2023-05-29', requestBody);
-      
-      if (response.results && response.results.length > 0 && response.results[0]) {
-        return response.results[0].generated_text.trim();
-      }
-      
-      throw new Error('No results returned from watsonx.ai');
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : String(error);
-      throw new Error(`WatsonX generation failed: ${errorMessage}`);
-    }
-  }
-
-  /**
-   * Generate text with streaming (for future enhancement)
-   */
-  async generateStream(params: GenerationParams): Promise<AsyncGenerator<string>> {
-    // Placeholder for streaming implementation
-    const result = await this.generate(params);
-    
-    async function* streamGenerator() {
-      yield result;
-    }
-    
-    return streamGenerator();
-  }
-
-  /**
-   * Make HTTP request to watsonx.ai API
-   */
-  private makeRequest(endpoint: string, body: unknown): Promise<WatsonXResponse> {
-    return new Promise((resolve, reject) => {
-      const url = new URL(endpoint, this.baseUrl);
-      const postData = JSON.stringify(body);
-
-      const options = {
-        hostname: url.hostname,
-        port: 443,
-        path: url.pathname + url.search,
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Authorization': `Bearer ${this.config.apiKey}`,
-          'Content-Length': Buffer.byteLength(postData),
+    const result = await this.service.textChat({
+      messages: [
+        {
+          role: 'user',
+          content: params.prompt,
         },
-      };
-
-      const req = https.request(options, (res) => {
-        let data = '';
-
-        res.on('data', (chunk) => {
-          data += chunk;
-        });
-
-        res.on('end', () => {
-          if (res.statusCode && res.statusCode >= 200 && res.statusCode < 300) {
-            try {
-              const response = JSON.parse(data) as WatsonXResponse;
-              resolve(response);
-            } catch (error) {
-              reject(new Error(`Failed to parse response: ${error}`));
-            }
-          } else {
-            reject(new Error(`HTTP ${res.statusCode}: ${data}`));
-          }
-        });
-      });
-
-      req.on('error', (error) => {
-        reject(error);
-      });
-
-      req.write(postData);
-      req.end();
+      ],
+      modelId: this.config.modelId,
+      projectId: this.config.projectId,
+      maxTokens: params.maxTokens || this.config.maxTokens,
+      temperature: params.temperature ?? this.config.temperature,
+      topP: params.topP || this.config.topP,
     });
+
+    const content = result.result.choices?.[0]?.message?.content;
+    if (content) {
+      return content.trim();
+    }
+
+    throw new Error('No content in chat response');
   }
 
   /**
@@ -147,7 +86,7 @@ export class WatsonXClient {
   async testConnection(): Promise<boolean> {
     try {
       await this.generate({
-        prompt: 'Test connection',
+        prompt: 'Reply with the word ok',
         maxTokens: 10,
       });
       return true;

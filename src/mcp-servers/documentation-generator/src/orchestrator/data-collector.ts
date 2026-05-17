@@ -80,6 +80,7 @@ export class DataCollector {
 
   /**
    * Collect data for API reference
+   * Complexity data is summarized to avoid oversized prompts.
    */
   async collectForAPIReference(): Promise<CollectedData> {
     const data: CollectedData = {};
@@ -89,7 +90,8 @@ export class DataCollector {
         data.structure = await this.mcpClient.callTool('code-analyzer', 'analyze_structure');
         data.entryPoints = await this.mcpClient.callTool('code-analyzer', 'find_entry_points');
         data.dependencies = await this.mcpClient.callTool('code-analyzer', 'analyze_dependencies');
-        data.complexity = await this.mcpClient.callTool('code-analyzer', 'get_complexity_metrics');
+        // Summarize complexity to prevent oversized prompts
+        data.complexity = await this.getSummaryStats();
       } catch (error) {
         console.error('Error collecting API reference data:', error);
       }

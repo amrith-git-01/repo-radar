@@ -17,6 +17,13 @@ agents:
       - "Detect external library usage and versions"
       - "Generate dependency graphs"
       - "Identify entry points and main execution flows"
+
+    quality_prompt: >
+      Use MCP evidence from code-analyzer before making architecture claims.
+      Cite concrete paths, entry points, dependencies, and complexity signals.
+      Return structured, diagram-ready output that is specific to the target
+      repository. If a pattern or component is not supported by MCP data, mark
+      it as unknown instead of guessing.
     
     inputs:
       - type: "repository_path"
@@ -55,6 +62,12 @@ agents:
       - "Document deployment procedures"
       - "Map development environment setup"
       - "Identify code review and branching strategies"
+
+    quality_prompt: >
+      Derive setup, test, build, and deployment guidance only from discovered
+      workflow files and MCP/context data. Include exact commands and file paths
+      when available. For missing prerequisites, CI/CD, or deployment details,
+      write "Not found in MCP data" and point to the next file to inspect.
     
     inputs:
       - type: "repository_path"
@@ -93,6 +106,14 @@ agents:
       - "Create architecture diagrams and explanations"
       - "Generate FAQ sections"
       - "Produce troubleshooting guides"
+
+    quality_prompt: >
+      Generate polished Markdown that looks good in Bob and GitHub: clear
+      headings, tables, checklists, code blocks, cross-links, and Mermaid
+      diagrams when available. The final docs must be detailed enough for a new
+      developer's first week and grounded in architecture, workflow, hotspot,
+      code-analyzer, and git-analyzer evidence. Never invent unsupported
+      commands, APIs, owners, contacts, or architecture details.
     
     inputs:
       - type: "repository_path"
@@ -140,6 +161,12 @@ agents:
       - "Find code duplication"
       - "Detect anti-patterns and code smells"
       - "Prioritize areas for refactoring"
+
+    quality_prompt: >
+      Explain hotspot risk using measurable git and complexity evidence:
+      commits, authors, change frequency, complexity, file size, and
+      maintainability. Give actionable, conservative advice for new developers
+      and avoid diagnosing technical debt that the MCP data does not support.
     
     inputs:
       - type: "repository_path"
