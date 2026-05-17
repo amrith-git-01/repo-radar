@@ -1,0 +1,17 @@
+graph LR
+  OwnerController --> OwnerService
+  OwnerService --> OwnerRepository
+  OwnerRepository --> OwnerEntity
+  OwnerEntity -->|maps to| DB[(Database)]
+  VetController --> VetService
+  VetService --> VetRepository
+  VetRepository --> VetEntity
+  VetEntity --> DB
+  PetController --> PetService
+  PetService --> PetRepository
+  PetRepository --> PetEntity
+  PetEntity --> DB
+  VisitController --> VisitService
+  VisitService --> VisitRepository
+  VisitRepository --> VisitEntity
+  VisitEntity --> DB

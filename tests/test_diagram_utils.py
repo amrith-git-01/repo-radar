@@ -25,3 +25,12 @@ def test_embed_mermaid_in_markdown():
     assert "## Title" in md
     assert "```mermaid" in md
     assert "A-->B" in md
+
+
+def test_normalize_mermaid_json_escaped_newlines():
+    raw = "graph TB\\n  A-->B\\n  B-->C"
+    normalized = __import__(
+        "src.agents.diagram_utils", fromlist=["normalize_mermaid"]
+    ).normalize_mermaid(raw)
+    assert "\\n" not in normalized
+    assert normalized.count("\n") >= 2

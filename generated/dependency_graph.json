@@ -1,0 +1,349 @@
+{
+  "nodes": [
+    {
+      "id": "org",
+      "label": "org",
+      "type": "import",
+      "usage_count": 38,
+      "files": [
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Owner.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerController.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerRepository.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Pet.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetController.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetType.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetTypeFormatter.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetTypeRepository.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetValidator.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Visit.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\VisitController.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\PetClinicApplication.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\PetClinicRuntimeHints.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\system\\CacheConfiguration.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\system\\CrashController.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\system\\WebConfiguration.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\system\\WelcomeController.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\Specialty.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\Vet.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\VetController.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\VetRepository.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\model\\ValidatorTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\MySqlIntegrationTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\MysqlTestApplication.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerControllerTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetControllerTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetTypeFormatterTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetValidatorTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\VisitControllerTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\PetClinicIntegrationTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\PostgresIntegrationTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\service\\ClinicServiceTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\service\\EntityUtils.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\system\\CrashControllerIntegrationTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\system\\CrashControllerTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\system\\I18nPropertiesSyncTest.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\vet\\VetControllerTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\vet\\VetTests.java"
+      ]
+    },
+    {
+      "id": "java",
+      "label": "java",
+      "type": "import",
+      "usage_count": 26,
+      "files": [
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\model\\BaseEntity.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Owner.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerController.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerRepository.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Pet.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetController.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetTypeFormatter.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetTypeRepository.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Visit.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\VisitController.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\system\\WebConfiguration.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\Vet.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\VetController.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\VetRepository.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\Vets.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\model\\ValidatorTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerControllerTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetControllerTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetTypeFormatterTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetValidatorTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\VisitControllerTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\PostgresIntegrationTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\service\\ClinicServiceTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\service\\EntityUtils.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\system\\CrashControllerIntegrationTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\system\\I18nPropertiesSyncTest.java"
+      ]
+    },
+    {
+      "id": "static",
+      "label": "static",
+      "type": "import",
+      "usage_count": 15,
+      "files": [
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\model\\ValidatorTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\MySqlIntegrationTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerControllerTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetControllerTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetTypeFormatterTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetValidatorTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\VisitControllerTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\PetClinicIntegrationTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\PostgresIntegrationTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\service\\ClinicServiceTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\system\\CrashControllerIntegrationTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\system\\CrashControllerTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\system\\I18nPropertiesSyncTest.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\vet\\VetControllerTests.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\vet\\VetTests.java"
+      ]
+    },
+    {
+      "id": "jakarta",
+      "label": "jakarta",
+      "type": "import",
+      "usage_count": 14,
+      "files": [
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\model\\BaseEntity.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\model\\NamedEntity.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\model\\Person.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Owner.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerController.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Pet.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetController.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetType.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Visit.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\VisitController.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\Specialty.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\Vet.java",
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\Vets.java",
+        "src\\test\\java\\org\\springframework\\samples\\petclinic\\model\\ValidatorTests.java"
+      ]
+    },
+    {
+      "id": "javax",
+      "label": "javax",
+      "type": "import",
+      "usage_count": 1,
+      "files": [
+        "src\\main\\java\\org\\springframework\\samples\\petclinic\\system\\CacheConfiguration.java"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Owner.java",
+      "to": "org",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerController.java",
+      "to": "org",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerRepository.java",
+      "to": "org",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Pet.java",
+      "to": "org",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetController.java",
+      "to": "org",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetType.java",
+      "to": "org",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetTypeFormatter.java",
+      "to": "org",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetTypeRepository.java",
+      "to": "org",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetValidator.java",
+      "to": "org",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Visit.java",
+      "to": "org",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\model\\BaseEntity.java",
+      "to": "java",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Owner.java",
+      "to": "java",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerController.java",
+      "to": "java",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerRepository.java",
+      "to": "java",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Pet.java",
+      "to": "java",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetController.java",
+      "to": "java",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetTypeFormatter.java",
+      "to": "java",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetTypeRepository.java",
+      "to": "java",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Visit.java",
+      "to": "java",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\VisitController.java",
+      "to": "java",
+      "type": "uses"
+    },
+    {
+      "from": "src\\test\\java\\org\\springframework\\samples\\petclinic\\model\\ValidatorTests.java",
+      "to": "static",
+      "type": "uses"
+    },
+    {
+      "from": "src\\test\\java\\org\\springframework\\samples\\petclinic\\MySqlIntegrationTests.java",
+      "to": "static",
+      "type": "uses"
+    },
+    {
+      "from": "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerControllerTests.java",
+      "to": "static",
+      "type": "uses"
+    },
+    {
+      "from": "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetControllerTests.java",
+      "to": "static",
+      "type": "uses"
+    },
+    {
+      "from": "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetTypeFormatterTests.java",
+      "to": "static",
+      "type": "uses"
+    },
+    {
+      "from": "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetValidatorTests.java",
+      "to": "static",
+      "type": "uses"
+    },
+    {
+      "from": "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\VisitControllerTests.java",
+      "to": "static",
+      "type": "uses"
+    },
+    {
+      "from": "src\\test\\java\\org\\springframework\\samples\\petclinic\\PetClinicIntegrationTests.java",
+      "to": "static",
+      "type": "uses"
+    },
+    {
+      "from": "src\\test\\java\\org\\springframework\\samples\\petclinic\\PostgresIntegrationTests.java",
+      "to": "static",
+      "type": "uses"
+    },
+    {
+      "from": "src\\test\\java\\org\\springframework\\samples\\petclinic\\service\\ClinicServiceTests.java",
+      "to": "static",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\model\\BaseEntity.java",
+      "to": "jakarta",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\model\\NamedEntity.java",
+      "to": "jakarta",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\model\\Person.java",
+      "to": "jakarta",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Owner.java",
+      "to": "jakarta",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerController.java",
+      "to": "jakarta",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Pet.java",
+      "to": "jakarta",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetController.java",
+      "to": "jakarta",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetType.java",
+      "to": "jakarta",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Visit.java",
+      "to": "jakarta",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\VisitController.java",
+      "to": "jakarta",
+      "type": "uses"
+    },
+    {
+      "from": "src\\main\\java\\org\\springframework\\samples\\petclinic\\system\\CacheConfiguration.java",
+      "to": "javax",
+      "type": "uses"
+    }
+  ],
+  "metadata": {
+    "total_dependencies": 5,
+    "generated_at": "2026-05-17 11:07:08"
+  }
+}

@@ -1,0 +1,443 @@
+{
+  "priorities": {
+    "critical": [],
+    "high": [
+      {
+        "file": "pom.xml",
+        "risk_score": 50,
+        "metrics": {
+          "commits": 332,
+          "authors": 35,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer",
+          "Frequent changes indicate instability - add comprehensive tests"
+        ]
+      },
+      {
+        "file": "readme.md",
+        "risk_score": 50,
+        "metrics": {
+          "commits": 100,
+          "authors": 24,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer",
+          "Frequent changes indicate instability - add comprehensive tests"
+        ]
+      }
+    ],
+    "medium": [
+      {
+        "file": "build.gradle",
+        "risk_score": 49,
+        "metrics": {
+          "commits": 49,
+          "authors": 11,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer",
+          "Frequent changes indicate instability - add comprehensive tests"
+        ]
+      },
+      {
+        "file": "src/test/java/org/springframework/samples/petclinic/owner/OwnerControllerTests.java",
+        "risk_score": 41,
+        "metrics": {
+          "commits": 32,
+          "authors": 10,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer",
+          "Frequent changes indicate instability - add comprehensive tests"
+        ]
+      },
+      {
+        "file": "src/test/java/org/springframework/samples/petclinic/service/ClinicServiceTests.java",
+        "risk_score": 41,
+        "metrics": {
+          "commits": 32,
+          "authors": 13,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer",
+          "Frequent changes indicate instability - add comprehensive tests"
+        ]
+      },
+      {
+        "file": "src/main/java/org/springframework/samples/petclinic/owner/PetController.java",
+        "risk_score": 39,
+        "metrics": {
+          "commits": 29,
+          "authors": 13,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer"
+        ]
+      },
+      {
+        "file": "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java",
+        "risk_score": 38,
+        "metrics": {
+          "commits": 27,
+          "authors": 11,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer"
+        ]
+      },
+      {
+        "file": "src/main/java/org/springframework/samples/petclinic/owner/Owner.java",
+        "risk_score": 37,
+        "metrics": {
+          "commits": 24,
+          "authors": 16,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer"
+        ]
+      },
+      {
+        "file": "src/main/java/org/springframework/samples/petclinic/owner/VisitController.java",
+        "risk_score": 36,
+        "metrics": {
+          "commits": 22,
+          "authors": 11,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer"
+        ]
+      },
+      {
+        "file": "src/test/java/org/springframework/samples/petclinic/owner/PetControllerTests.java",
+        "risk_score": 36,
+        "metrics": {
+          "commits": 22,
+          "authors": 11,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer"
+        ]
+      },
+      {
+        "file": "src/test/java/org/springframework/samples/petclinic/model/ValidatorTests.java",
+        "risk_score": 36,
+        "metrics": {
+          "commits": 22,
+          "authors": 10,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer"
+        ]
+      },
+      {
+        "file": "src/main/java/org/springframework/samples/petclinic/owner/Pet.java",
+        "risk_score": 34,
+        "metrics": {
+          "commits": 22,
+          "authors": 9,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer"
+        ]
+      },
+      {
+        "file": "src/main/java/org/springframework/samples/petclinic/model/BaseEntity.java",
+        "risk_score": 34,
+        "metrics": {
+          "commits": 18,
+          "authors": 11,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer"
+        ]
+      },
+      {
+        "file": "README.md",
+        "risk_score": 33,
+        "metrics": {
+          "commits": 20,
+          "authors": 9,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer"
+        ]
+      },
+      {
+        "file": "src/test/java/org/springframework/samples/petclinic/vet/VetControllerTests.java",
+        "risk_score": 33,
+        "metrics": {
+          "commits": 19,
+          "authors": 9,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer"
+        ]
+      },
+      {
+        "file": "src/main/resources/application.properties",
+        "risk_score": 32,
+        "metrics": {
+          "commits": 25,
+          "authors": 7,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer"
+        ]
+      },
+      {
+        "file": ".gitignore",
+        "risk_score": 32,
+        "metrics": {
+          "commits": 21,
+          "authors": 8,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer"
+        ]
+      },
+      {
+        "file": "src/main/java/org/springframework/samples/petclinic/owner/OwnerRepository.java",
+        "risk_score": 32,
+        "metrics": {
+          "commits": 18,
+          "authors": 9,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer"
+        ]
+      },
+      {
+        "file": "src/main/java/org/springframework/samples/petclinic/PetClinicApplication.java",
+        "risk_score": 31,
+        "metrics": {
+          "commits": 19,
+          "authors": 8,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer"
+        ]
+      },
+      {
+        "file": ".mvn/wrapper/maven-wrapper.properties",
+        "risk_score": 31,
+        "metrics": {
+          "commits": 16,
+          "authors": 9,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer"
+        ]
+      },
+      {
+        "file": "src/test/java/org/springframework/samples/petclinic/owner/VisitControllerTests.java",
+        "risk_score": 30,
+        "metrics": {
+          "commits": 16,
+          "authors": 8,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer"
+        ]
+      },
+      {
+        "file": "src/test/java/org/springframework/samples/petclinic/system/CrashControllerTests.java",
+        "risk_score": 30,
+        "metrics": {
+          "commits": 16,
+          "authors": 8,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer"
+        ]
+      },
+      {
+        "file": "src/main/java/org/springframework/samples/petclinic/model/NamedEntity.java",
+        "risk_score": 30,
+        "metrics": {
+          "commits": 14,
+          "authors": 9,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer"
+        ]
+      },
+      {
+        "file": "docker-compose.yml",
+        "risk_score": 29,
+        "metrics": {
+          "commits": 21,
+          "authors": 6,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer"
+        ]
+      },
+      {
+        "file": "src/main/resources/templates/fragments/layout.html",
+        "risk_score": 29,
+        "metrics": {
+          "commits": 18,
+          "authors": 7,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer"
+        ]
+      },
+      {
+        "file": "src/main/java/org/springframework/samples/petclinic/model/Person.java",
+        "risk_score": 29,
+        "metrics": {
+          "commits": 14,
+          "authors": 8,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer"
+        ]
+      },
+      {
+        "file": "src/test/java/org/springframework/samples/petclinic/MySqlIntegrationTests.java",
+        "risk_score": 27,
+        "metrics": {
+          "commits": 17,
+          "authors": 6,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer"
+        ]
+      },
+      {
+        "file": "src/test/java/org/springframework/samples/petclinic/owner/PetTypeFormatterTests.java",
+        "risk_score": 27,
+        "metrics": {
+          "commits": 14,
+          "authors": 7,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer"
+        ]
+      },
+      {
+        "file": "src/main/java/org/springframework/samples/petclinic/vet/Vet.java",
+        "risk_score": 27,
+        "metrics": {
+          "commits": 13,
+          "authors": 7,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer"
+        ]
+      },
+      {
+        "file": "gradle/wrapper/gradle-wrapper.properties",
+        "risk_score": 26,
+        "metrics": {
+          "commits": 15,
+          "authors": 6,
+          "complexity": 0,
+          "lines": 0,
+          "maintainability": 100
+        },
+        "recommendations": [
+          "High author count suggests unclear ownership - consider assigning a maintainer"
+        ]
+      }
+    ],
+    "low": []
+  },
+  "summary": {
+    "total_hotspots": 30,
+    "critical": 0,
+    "high": 2,
+    "medium": 28,
+    "low": 0
+  },
+  "generated_at": "2026-05-17 11:07:20"
+}

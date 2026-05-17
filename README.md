@@ -27,7 +27,7 @@ DevRamp accelerates the onboarding process for legacy codebases by automatically
 2. Copy `.bob/mcp_servers.example.json` → global Bob `mcp_servers.json` (see [docs/MCP_SETUP.md](docs/MCP_SETUP.md))
 3. Set watsonx credentials in `.env`
 4. Open **Onboarding Assistant** in Bob IDE
-5. Run `@onboard` or say `onboard me`
+5. Run **`@onboard test_repo`** (required — plain "onboard me" alone may only chat until the skill runs)
 6. Review `docs/ONBOARDING.md` (embedded Mermaid diagrams)
 7. Export Bob session to `bob_sessions/02_onboarding/` for judges
 

@@ -14,6 +14,7 @@ from src.agents.mcp_client import MCPClient
 from src.agents.diagram_utils import (
     extract_json_from_llm_text,
     persist_diagrams,
+    build_fallback_hotspot_diagrams,
 )
 
 
@@ -64,9 +65,13 @@ class HotspotDetector(BaseAgent):
         self.log_info("Analyzing code complexity...")
         complexity_metrics = await self.code_analyzer.call_tool('get_complexity_metrics')
         
-        # Step 3: Get contributor information
+        # Step 3: Get contributor information (optional for large repos)
         self.log_info("Analyzing contributors...")
-        contributors = await self.git_analyzer.call_tool('get_contributors')
+        try:
+            contributors = await self.git_analyzer.call_tool('get_contributors')
+        except Exception as e:
+            self.log_warning(f"Contributor analysis skipped: {e}")
+            contributors = []
         
         # Step 4: Combine metrics to identify true hotspots
         self.log_info("Identifying critical hotspots...")
@@ -84,36 +89,27 @@ class HotspotDetector(BaseAgent):
             )
             hotspot_data = self._parse_hotspot_json(hotspot_report)
         if hotspot_data is None:
-            hotspot_data = {"hotspots": [], "diagrams": {}}
+            hotspot_data = build_fallback_hotspot_diagrams(hotspots)
 
         docs_root = output_dir.parent if output_dir.name == "onboarding" else output_dir
         diagrams = hotspot_data.get("diagrams", {})
         persist_diagrams(docs_root, diagrams, prefix="hotspot")
 
-        # Step 6: Generate refactoring priorities
-        self.log_info("Creating refactoring priorities...")
+        generated_dir = docs_root.parent / "generated"
+        generated_dir.mkdir(parents=True, exist_ok=True)
         refactoring_priorities = self._create_refactoring_priorities(hotspots)
-        
-        # Step 7: Save outputs
-        report_path = output_dir / 'hotspot_report.md'
-        priorities_path = output_dir / 'refactoring_priorities.json'
-        
-        with open(report_path, 'w', encoding='utf-8') as f:
-            f.write(hotspot_report)
-        
-        with open(priorities_path, 'w', encoding='utf-8') as f:
+        priorities_path = generated_dir / "refactoring_priorities.json"
+        with open(priorities_path, "w", encoding="utf-8") as f:
             json.dump(refactoring_priorities, f, indent=2)
-        
-        self.log_info(f"Hotspot report saved to {report_path}")
-        self.log_info(f"Refactoring priorities saved to {priorities_path}")
-        
+
+        self.log_info(f"Hotspot diagrams saved under {docs_root / 'diagrams'}")
+
         return {
-            'hotspot_report': str(report_path),
-            'refactoring_priorities': str(priorities_path),
-            'hotspots': hotspots,
-            'git_hotspots': git_hotspots,
-            'complexity_metrics': complexity_metrics,
-            'parsed': hotspot_data,
+            "hotspots": hotspots,
+            "git_hotspots": git_hotspots,
+            "complexity_metrics": complexity_metrics,
+            "parsed": hotspot_data,
+            "refactoring_priorities": str(priorities_path),
         }
 
     def _parse_hotspot_json(self, text: str) -> Optional[Dict[str, Any]]:

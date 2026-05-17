@@ -98,7 +98,20 @@ class MCPClient:
                 self.logger.error(f"Error stopping server: {e}")
             finally:
                 self.process = None
-    
+
+    async def _read_response_line(self) -> bytes:
+        """Read one JSON-RPC line; raise StreamReader limit for large tool payloads."""
+        if not self.process or not self.process.stdout:
+            raise Exception("Not connected to MCP server")
+
+        reader = self.process.stdout
+        old_limit = reader._limit
+        reader._limit = 16 * 1024 * 1024
+        try:
+            return await reader.readline()
+        finally:
+            reader._limit = old_limit
+
     async def _send_request(self, method: str, params: Dict[str, Any]) -> Dict[str, Any]:
         """
         Send a JSON-RPC request to the MCP server.
@@ -131,16 +144,15 @@ class MCPClient:
             self.process.stdin.write(request_json.encode())
             await self.process.stdin.drain()
             
-            # Read response
             response_line = await asyncio.wait_for(
-                self.process.stdout.readline(),
-                timeout=30.0
+                self._read_response_line(),
+                timeout=120.0,
             )
-            
+
             if not response_line:
                 raise Exception("Server closed connection")
-            
-            response = json.loads(response_line.decode())
+
+            response = json.loads(response_line.decode().strip())
             self.logger.debug(f"Received response: {json.dumps(response)[:200]}")
             
             # Check for errors

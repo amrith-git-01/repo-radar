@@ -1,0 +1,24 @@
+{
+  "mcpServers": {
+    "code-analyzer": {
+      "command": "node",
+      "args": ["dev-ramp/src/mcp-servers/code-analyzer/build/server.js"],
+      "env": { "REPO_PATH": "REPLACE_WITH_TARGET_REPO" }
+    },
+    "git-analyzer": {
+      "command": "node",
+      "args": ["dev-ramp/src/mcp-servers/git-analyzer/build/server.js"],
+      "env": { "REPO_PATH": "REPLACE_WITH_TARGET_REPO" }
+    },
+    "documentation-generator": {
+      "command": "node",
+      "args": [
+        "dev-ramp/src/mcp-servers/documentation-generator/build/server.js"
+      ],
+      "env": {
+        "REPO_PATH": "dev-ramp/test_repo",
+        "OUTPUT_DIR": "dev-ramp/docs"
+      }
+    }
+  }
+}

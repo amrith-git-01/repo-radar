@@ -17,6 +17,7 @@ from src.agents.diagram_utils import (
     extract_json_from_llm_text,
     embed_mermaid_in_markdown,
     write_mermaid_file,
+    build_fallback_workflow_diagram,
 )
 
 
@@ -72,7 +73,7 @@ class WorkflowExtractor(BaseAgent):
             workflow_report = await self._generate_workflow_guide(workflows, json_only=True)
             workflow_data = self._parse_workflow_json(workflow_report)
         if workflow_data is None:
-            workflow_data = {"workflows": []}
+            workflow_data = build_fallback_workflow_diagram("Standard development workflow")
 
         docs_root = output_dir.parent if output_dir.name == "onboarding" else output_dir
         lines = ["# Workflows\n\n"]
@@ -91,30 +92,10 @@ class WorkflowExtractor(BaseAgent):
         workflows_path.write_text("".join(lines), encoding="utf-8")
         self.log_info(f"Workflows saved to {workflows_path}")
 
-        workflow_guide = workflow_report
-        
-        # Step 4: Generate setup instructions
-        self.log_info("Generating setup instructions...")
-        setup_instructions = await self._generate_setup_instructions(workflows)
-        
-        # Step 5: Save outputs
-        workflow_path = output_dir / 'workflow_guide.md'
-        setup_path = output_dir / 'setup_instructions.md'
-        
-        with open(workflow_path, 'w', encoding='utf-8') as f:
-            f.write(workflow_guide)
-        
-        with open(setup_path, 'w', encoding='utf-8') as f:
-            f.write(setup_instructions)
-        
-        self.log_info(f"Workflow guide saved to {workflow_path}")
-        self.log_info(f"Setup instructions saved to {setup_path}")
-        
         return {
-            'workflow_guide': str(workflows_path),
-            'setup_instructions': str(setup_path),
-            'discovered_files': {k: v['path'] for k, v in workflows.items()},
-            'parsed': workflow_data,
+            "workflow_guide": str(workflows_path),
+            "discovered_files": {k: v["path"] for k, v in workflows.items()},
+            "parsed": workflow_data,
         }
 
     def _parse_workflow_json(self, text: str) -> Optional[Dict[str, Any]]:

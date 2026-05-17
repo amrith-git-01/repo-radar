@@ -2,24 +2,24 @@
 
 /**
  * Git Analyzer MCP Server
- * 
+ *
  * Provides tools for analyzing git repository history, hotspots, and contributors.
  * Uses the Model Context Protocol (MCP) to expose git analysis capabilities to AI agents.
  */
 
-import { Server } from '@modelcontextprotocol/sdk/server/index.js';
-import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import { Server } from "@modelcontextprotocol/sdk/server/index.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import {
   CallToolRequestSchema,
   ListToolsRequestSchema,
   Tool,
-} from '@modelcontextprotocol/sdk/types.js';
-import { execSync } from 'child_process';
-import * as path from 'path';
-import * as fs from 'fs';
+} from "@modelcontextprotocol/sdk/types.js";
+import { execSync } from "child_process";
+import * as path from "path";
+import * as fs from "fs";
 
 // Get repository path from environment variable
-const REPO_PATH = process.env['REPO_PATH'] || process.cwd();
+const REPO_PATH = process.env["REPO_PATH"] || process.cwd();
 
 interface HotspotFile {
   path: string;
@@ -62,7 +62,10 @@ interface FileHistory {
 function executeGitCommand(command: string): string {
   try {
     const fullCommand = `git -C "${REPO_PATH}" ${command}`;
-    return execSync(fullCommand, { encoding: 'utf-8', maxBuffer: 10 * 1024 * 1024 });
+    return execSync(fullCommand, {
+      encoding: "utf-8",
+      maxBuffer: 10 * 1024 * 1024,
+    });
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
     throw new Error(`Git command failed: ${errorMessage}`);
@@ -74,7 +77,7 @@ function executeGitCommand(command: string): string {
  */
 function isGitRepository(): boolean {
   try {
-    executeGitCommand('rev-parse --git-dir');
+    executeGitCommand("rev-parse --git-dir");
     return true;
   } catch {
     return false;
@@ -86,47 +89,54 @@ function isGitRepository(): boolean {
  */
 function getHotspotFiles(limit: number = 20): HotspotFile[] {
   if (!isGitRepository()) {
-    throw new Error('Not a git repository');
+    throw new Error("Not a git repository");
   }
 
   try {
     // Get all files with their commit counts
-    const output = executeGitCommand('log --name-only --pretty=format:"%H|%an|%ad" --date=iso');
-    const lines = output.split('\n').filter(line => line.trim());
-    
-    const fileStats = new Map<string, {
-      commits: Set<string>;
-      authors: Set<string>;
-      lastModified: string;
-    }>();
-    
-    let currentCommit = '';
-    let currentAuthor = '';
-    let currentDate = '';
-    
+    const output = executeGitCommand(
+      'log --name-only --pretty=format:"%H|%an|%ad" --date=iso',
+    );
+    const lines = output.split("\n").filter((line) => line.trim());
+
+    const fileStats = new Map<
+      string,
+      {
+        commits: Set<string>;
+        authors: Set<string>;
+        lastModified: string;
+      }
+    >();
+
+    let currentCommit = "";
+    let currentAuthor = "";
+    let currentDate = "";
+
     for (const line of lines) {
-      if (line.includes('|')) {
+      if (line.includes("|")) {
         // This is a commit header line
-        const parts = line.split('|');
-        const hash = parts[0] ?? '';
-        const author = parts[1] ?? '';
-        const date = parts[2] ?? '';
+        const parts = line.split("|");
+        const hash = parts[0] ?? "";
+        const author = parts[1] ?? "";
+        const date = parts[2] ?? "";
         currentCommit = hash;
         currentAuthor = author;
         currentDate = date;
       } else if (line.trim() && currentCommit) {
         // This is a file path
         const filePath = line.trim();
-        
+
         // Skip non-code files
-        if (filePath.includes('node_modules/') || 
-            filePath.includes('.git/') ||
-            filePath.includes('target/') ||
-            filePath.includes('build/') ||
-            filePath.includes('dist/')) {
+        if (
+          filePath.includes("node_modules/") ||
+          filePath.includes(".git/") ||
+          filePath.includes("target/") ||
+          filePath.includes("build/") ||
+          filePath.includes("dist/")
+        ) {
           continue;
         }
-        
+
         if (!fileStats.has(filePath)) {
           fileStats.set(filePath, {
             commits: new Set(),
@@ -134,18 +144,18 @@ function getHotspotFiles(limit: number = 20): HotspotFile[] {
             lastModified: currentDate,
           });
         }
-        
+
         const stats = fileStats.get(filePath)!;
         stats.commits.add(currentCommit);
         stats.authors.add(currentAuthor);
-        
+
         // Update last modified if this commit is more recent
         if (new Date(currentDate) > new Date(stats.lastModified)) {
           stats.lastModified = currentDate;
         }
       }
     }
-    
+
     // Convert to array and calculate change frequency
     const hotspots: HotspotFile[] = [];
     for (const [filePath, stats] of fileStats.entries()) {
@@ -154,17 +164,18 @@ function getHotspotFiles(limit: number = 20): HotspotFile[] {
       if (!fs.existsSync(fullPath)) {
         continue;
       }
-      
+
       const commits = stats.commits.size;
       const authors = stats.authors.size;
-      
+
       // Calculate change frequency (commits per day since first commit)
       const daysSinceLastModified = Math.max(
         1,
-        (Date.now() - new Date(stats.lastModified).getTime()) / (1000 * 60 * 60 * 24)
+        (Date.now() - new Date(stats.lastModified).getTime()) /
+          (1000 * 60 * 60 * 24),
       );
       const changeFrequency = commits / daysSinceLastModified;
-      
+
       hotspots.push({
         path: filePath,
         commits,
@@ -173,11 +184,9 @@ function getHotspotFiles(limit: number = 20): HotspotFile[] {
         changeFrequency,
       });
     }
-    
+
     // Sort by commit count and return top N
-    return hotspots
-      .sort((a, b) => b.commits - a.commits)
-      .slice(0, limit);
+    return hotspots.sort((a, b) => b.commits - a.commits).slice(0, limit);
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
     throw new Error(`Failed to get hotspot files: ${errorMessage}`);
@@ -189,107 +198,34 @@ function getHotspotFiles(limit: number = 20): HotspotFile[] {
  */
 function getContributors(): Contributor[] {
   if (!isGitRepository()) {
-    throw new Error('Not a git repository');
+    throw new Error("Not a git repository");
   }
 
   try {
-    // Get all commits with author info
-    const output = executeGitCommand(
-      'log --pretty=format:"%H|%an|%ae|%ad" --date=iso --numstat'
-    );
-    const lines = output.split('\n');
-    
-    const contributorMap = new Map<string, {
-      name: string;
-      email: string;
-      commits: Set<string>;
-      linesAdded: number;
-      linesDeleted: number;
-      firstCommit: string;
-      lastCommit: string;
-      files: Set<string>;
-    }>();
-    
-    let currentCommit = '';
-    let currentEmail = '';
-    
-    for (const line of lines) {
-      if (line.includes('|')) {
-        // This is a commit header
-        const parts = line.split('|');
-        const hash = parts[0] ?? '';
-        const author = parts[1] ?? '';
-        const email = parts[2] ?? '';
-        const date = parts[3] ?? '';
-        currentCommit = hash;
-        currentEmail = email;
-        
-        if (email && !contributorMap.has(email)) {
-          contributorMap.set(email, {
-            name: author,
-            email,
-            commits: new Set(),
-            linesAdded: 0,
-            linesDeleted: 0,
-            firstCommit: date,
-            lastCommit: date,
-            files: new Set(),
-          });
-        }
-        
-        const contributor = email ? contributorMap.get(email) : null;
-        if (contributor) {
-          contributor.commits.add(hash);
-        }
-        
-        // Update first and last commit dates
-        if (date && contributor && new Date(date) < new Date(contributor.firstCommit)) {
-          contributor.firstCommit = date;
-        }
-        if (date && contributor && new Date(date) > new Date(contributor.lastCommit)) {
-          contributor.lastCommit = date;
-        }
-      } else if (line.trim() && currentCommit) {
-        // This is a numstat line (additions deletions filename)
-        const match = line.match(/^(\d+|-)\s+(\d+|-)\s+(.+)$/);
-        if (match) {
-          const added = match[1];
-          const deleted = match[2];
-          const filePath = match[3];
-          const contributor = currentEmail ? contributorMap.get(currentEmail) : null;
-          
-          if (contributor) {
-            if (added && added !== '-') {
-              contributor.linesAdded += parseInt(added, 10);
-            }
-            if (deleted && deleted !== '-') {
-              contributor.linesDeleted += parseInt(deleted, 10);
-            }
-            
-            if (filePath) {
-              contributor.files.add(filePath);
-            }
-          }
-        }
-      }
-    }
-    
-    // Convert to array
+    // Use shortlog for large repos (avoids huge --numstat payloads)
+    const output = executeGitCommand("shortlog -sne --all");
     const contributors: Contributor[] = [];
-    for (const [, data] of contributorMap.entries()) {
+
+    for (const line of output.split("\n")) {
+      const match = line.trim().match(/^(\d+)\s+(.+?)\s+<([^>]+)>$/);
+      if (!match) {
+        continue;
+      }
+      const commits = parseInt(match[1] ?? "0", 10);
+      const name = match[2] ?? "";
+      const email = match[3] ?? "";
       contributors.push({
-        name: data.name,
-        email: data.email,
-        commits: data.commits.size,
-        linesAdded: data.linesAdded,
-        linesDeleted: data.linesDeleted,
-        firstCommit: data.firstCommit,
-        lastCommit: data.lastCommit,
-        files: Array.from(data.files),
+        name,
+        email,
+        commits,
+        linesAdded: 0,
+        linesDeleted: 0,
+        firstCommit: "",
+        lastCommit: "",
+        files: [],
       });
     }
-    
-    // Sort by commit count
+
     return contributors.sort((a, b) => b.commits - a.commits);
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
@@ -302,15 +238,15 @@ function getContributors(): Contributor[] {
  */
 function getFileHistory(filePath: string, limit: number = 50): FileHistory {
   if (!isGitRepository()) {
-    throw new Error('Not a git repository');
+    throw new Error("Not a git repository");
   }
 
   try {
     // Get commits for the file
     const output = executeGitCommand(
-      `log --follow --pretty=format:"%H|%an|%ad|%s" --date=iso --numstat -n ${limit} -- "${filePath}"`
+      `log --follow --pretty=format:"%H|%an|%ad|%s" --date=iso --numstat -n ${limit} -- "${filePath}"`,
     );
-    
+
     if (!output.trim()) {
       return {
         path: filePath,
@@ -319,32 +255,32 @@ function getFileHistory(filePath: string, limit: number = 50): FileHistory {
         authors: [],
       };
     }
-    
-    const lines = output.split('\n');
-    const commits: FileHistory['commits'] = [];
+
+    const lines = output.split("\n");
+    const commits: FileHistory["commits"] = [];
     const authors = new Set<string>();
-    
-    let currentCommit: FileHistory['commits'][0] | null = null;
-    
+
+    let currentCommit: FileHistory["commits"][0] | null = null;
+
     for (const line of lines) {
-      if (line.includes('|')) {
+      if (line.includes("|")) {
         // Save previous commit if exists
         if (currentCommit) {
           commits.push(currentCommit);
         }
-        
+
         // Parse new commit header
-        const parts = line.split('|');
-        const hash = parts[0] ?? '';
-        const author = parts[1] ?? '';
-        const date = parts[2] ?? '';
+        const parts = line.split("|");
+        const hash = parts[0] ?? "";
+        const author = parts[1] ?? "";
+        const date = parts[2] ?? "";
         const messageParts = parts.slice(3);
-        const message = messageParts.join('|');
-        
+        const message = messageParts.join("|");
+
         if (author) {
           authors.add(author);
         }
-        
+
         currentCommit = {
           hash,
           author,
@@ -361,21 +297,21 @@ function getFileHistory(filePath: string, limit: number = 50): FileHistory {
         if (match) {
           const added = match[1];
           const deleted = match[2];
-          if (added && added !== '-') {
+          if (added && added !== "-") {
             currentCommit.changes.additions += parseInt(added, 10);
           }
-          if (deleted && deleted !== '-') {
+          if (deleted && deleted !== "-") {
             currentCommit.changes.deletions += parseInt(deleted, 10);
           }
         }
       }
     }
-    
+
     // Add last commit
     if (currentCommit) {
       commits.push(currentCommit);
     }
-    
+
     return {
       path: filePath,
       commits,
@@ -392,121 +328,124 @@ function getFileHistory(filePath: string, limit: number = 50): FileHistory {
  * Main server setup
  */
 async function main() {
-  console.error('Starting Git Analyzer MCP Server...');
+  console.error("Starting Git Analyzer MCP Server...");
   console.error(`Repository path: ${REPO_PATH}`);
-  
+
   const server = new Server(
     {
-      name: 'git-analyzer',
-      version: '1.0.0',
+      name: "git-analyzer",
+      version: "1.0.0",
     },
     {
       capabilities: {
         tools: {},
       },
-    }
+    },
   );
-  
+
   // Define available tools
   const tools: Tool[] = [
     {
-      name: 'get_hotspot_files',
-      description: 'Identifies files with the most changes (hotspots) that may need refactoring',
+      name: "get_hotspot_files",
+      description:
+        "Identifies files with the most changes (hotspots) that may need refactoring",
       inputSchema: {
-        type: 'object',
+        type: "object",
         properties: {
           limit: {
-            type: 'number',
-            description: 'Maximum number of hotspot files to return (default: 20)',
+            type: "number",
+            description:
+              "Maximum number of hotspot files to return (default: 20)",
             default: 20,
           },
         },
       },
     },
     {
-      name: 'get_contributors',
-      description: 'Gets statistics about all contributors to the repository',
+      name: "get_contributors",
+      description: "Gets statistics about all contributors to the repository",
       inputSchema: {
-        type: 'object',
+        type: "object",
         properties: {},
       },
     },
     {
-      name: 'get_file_history',
-      description: 'Gets the commit history for a specific file',
+      name: "get_file_history",
+      description: "Gets the commit history for a specific file",
       inputSchema: {
-        type: 'object',
+        type: "object",
         properties: {
           file_path: {
-            type: 'string',
-            description: 'Path to the file relative to repository root',
+            type: "string",
+            description: "Path to the file relative to repository root",
           },
           limit: {
-            type: 'number',
-            description: 'Maximum number of commits to return (default: 50)',
+            type: "number",
+            description: "Maximum number of commits to return (default: 50)",
             default: 50,
           },
         },
-        required: ['file_path'],
+        required: ["file_path"],
       },
     },
   ];
-  
+
   // Handle tool list requests
   server.setRequestHandler(ListToolsRequestSchema, async () => ({
     tools,
   }));
-  
+
   // Handle tool execution requests
   server.setRequestHandler(CallToolRequestSchema, async (request) => {
     const { name, arguments: args } = request.params;
-    
+
     try {
       let result: unknown;
-      
+
       switch (name) {
-        case 'get_hotspot_files': {
+        case "get_hotspot_files": {
           const limit = (args as { limit?: number })?.limit || 20;
           result = getHotspotFiles(limit);
           break;
         }
-          
-        case 'get_contributors':
+
+        case "get_contributors":
           result = getContributors();
           break;
-          
-        case 'get_file_history': {
+
+        case "get_file_history": {
           const filePath = (args as { file_path: string }).file_path;
           const limit = (args as { limit?: number })?.limit || 50;
-          
+
           if (!filePath) {
-            throw new Error('file_path parameter is required');
+            throw new Error("file_path parameter is required");
           }
-          
+
           result = getFileHistory(filePath, limit);
           break;
         }
-          
+
         default:
           throw new Error(`Unknown tool: ${name}`);
       }
-      
+
       return {
         content: [
           {
-            type: 'text',
+            type: "text",
             text: JSON.stringify(result, null, 2),
           },
         ],
       } as const;
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : String(error);
+      const errorMessage =
+        error instanceof Error ? error.message : String(error);
       console.error(`Error executing tool ${name}:`, errorMessage);
-      
+
       return {
         content: [
           {
-            type: 'text',
+            type: "text",
             text: JSON.stringify({ error: errorMessage }, null, 2),
           },
         ],
@@ -514,17 +453,17 @@ async function main() {
       } as const;
     }
   });
-  
+
   // Start server with stdio transport
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  
-  console.error('Git Analyzer MCP Server running on stdio');
+
+  console.error("Git Analyzer MCP Server running on stdio");
 }
 
 // Run the server
 main().catch((error) => {
-  console.error('Fatal error:', error);
+  console.error("Fatal error:", error);
   process.exit(1);
 });
 

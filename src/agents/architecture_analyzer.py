@@ -16,6 +16,7 @@ from src.agents.diagram_utils import (
     extract_json_from_llm_text,
     persist_diagrams,
     embed_mermaid_in_markdown,
+    build_fallback_architecture_diagrams,
 )
 
 
@@ -92,11 +93,19 @@ class ArchitectureAnalyzer(BaseAgent):
                 "pattern": "unknown",
                 "components": [],
                 "tech_stack": [],
-                "summary_markdown": architecture_report,
-                "diagrams": {},
+                "summary_markdown": (
+                    "Architecture analysis completed from MCP data. "
+                    "Diagrams below were generated from repository structure."
+                ),
+                "diagrams": build_fallback_architecture_diagrams(
+                    entry_points, dependencies
+                ),
             }
 
-        diagrams = arch_data.get("diagrams", {})
+        diagrams = arch_data.get("diagrams") or build_fallback_architecture_diagrams(
+            entry_points, dependencies
+        )
+        arch_data["diagrams"] = diagrams
         persist_diagrams(docs_root, diagrams, prefix="architecture")
 
         arch_md_parts = [
@@ -114,32 +123,24 @@ class ArchitectureAnalyzer(BaseAgent):
 
         arch_path = docs_root / "ARCHITECTURE.md"
         arch_path.write_text("".join(arch_md_parts), encoding="utf-8")
-        
-        # Step 3: Generate dependency graph
-        self.log_info("Creating dependency graph...")
+
+        generated_dir = docs_root.parent / "generated"
+        generated_dir.mkdir(parents=True, exist_ok=True)
         dependency_graph = self._create_dependency_graph(dependencies)
-        
-        # Step 4: Save outputs
-        report_path = output_dir / 'architecture_report.md'
-        graph_path = output_dir / 'dependency_graph.json'
-        
-        with open(report_path, 'w', encoding='utf-8') as f:
-            f.write(architecture_report)
-        
-        with open(graph_path, 'w', encoding='utf-8') as f:
+        graph_path = generated_dir / "dependency_graph.json"
+        with open(graph_path, "w", encoding="utf-8") as f:
             json.dump(dependency_graph, f, indent=2)
-        
+
         self.log_info(f"Architecture report saved to {arch_path}")
-        self.log_info(f"Dependency graph saved to {graph_path}")
-        
+
         return {
-            'architecture_report': str(arch_path),
-            'dependency_graph': str(graph_path),
-            'structure': structure,
-            'entry_points': entry_points,
-            'dependencies': dependencies,
-            'complexity': complexity,
-            'parsed': arch_data,
+            "architecture_report": str(arch_path),
+            "dependency_graph": str(graph_path),
+            "structure": structure,
+            "entry_points": entry_points,
+            "dependencies": dependencies,
+            "complexity": complexity,
+            "parsed": arch_data,
         }
 
     def _parse_architecture_json(self, text: str) -> Optional[Dict[str, Any]]:

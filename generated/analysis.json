@@ -1,0 +1,1706 @@
+{
+  "status": "success",
+  "total_time": 25.163148403167725,
+  "agents_run": 4,
+  "successful": 4,
+  "failed": 0,
+  "results": {
+    "architecture": {
+      "agent": "architecture",
+      "status": "success",
+      "elapsed_time": 13.46799999999348,
+      "result": {
+        "architecture_report": "docs\\ARCHITECTURE.md",
+        "dependency_graph": "generated\\dependency_graph.json",
+        "structure": {
+          "totalFiles": 47,
+          "filesByExtension": {
+            ".java": 47
+          },
+          "directoryStructure": [
+            "src\\main\\java\\org\\springframework\\samples\\petclinic",
+            "src\\main\\java\\org\\springframework\\samples\\petclinic\\model",
+            "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner",
+            "src\\main\\java\\org\\springframework\\samples\\petclinic\\system",
+            "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet",
+            "src\\test\\java\\org\\springframework\\samples\\petclinic",
+            "src\\test\\java\\org\\springframework\\samples\\petclinic\\model",
+            "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner",
+            "src\\test\\java\\org\\springframework\\samples\\petclinic\\service",
+            "src\\test\\java\\org\\springframework\\samples\\petclinic\\system",
+            "src\\test\\java\\org\\springframework\\samples\\petclinic\\vet"
+          ],
+          "largestFiles": [
+            {
+              "path": "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerControllerTests.java",
+              "size": 9292,
+              "lines": 252
+            },
+            {
+              "path": "src\\test\\java\\org\\springframework\\samples\\petclinic\\service\\ClinicServiceTests.java",
+              "size": 8289,
+              "lines": 252
+            },
+            {
+              "path": "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetControllerTests.java",
+              "size": 7620,
+              "lines": 212
+            },
+            {
+              "path": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetController.java",
+              "size": 5831,
+              "lines": 184
+            },
+            {
+              "path": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Owner.java",
+              "size": 4533,
+              "lines": 177
+            },
+            {
+              "path": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerController.java",
+              "size": 6219,
+              "lines": 177
+            },
+            {
+              "path": "src\\test\\java\\org\\springframework\\samples\\petclinic\\PostgresIntegrationTests.java",
+              "size": 5148,
+              "lines": 151
+            },
+            {
+              "path": "src\\test\\java\\org\\springframework\\samples\\petclinic\\system\\I18nPropertiesSyncTest.java",
+              "size": 4231,
+              "lines": 139
+            },
+            {
+              "path": "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetValidatorTests.java",
+              "size": 2833,
+              "lines": 118
+            },
+            {
+              "path": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\VisitController.java",
+              "size": 3511,
+              "lines": 105
+            }
+          ]
+        },
+        "entry_points": [
+          {
+            "path": "src\\main\\java\\org\\springframework\\samples\\petclinic\\PetClinicApplication.java",
+            "type": "java_main_method",
+            "confidence": "high",
+            "reason": "Contains Java main method"
+          },
+          {
+            "path": "src\\test\\java\\org\\springframework\\samples\\petclinic\\MysqlTestApplication.java",
+            "type": "java_main_method",
+            "confidence": "high",
+            "reason": "Contains Java main method"
+          },
+          {
+            "path": "src\\test\\java\\org\\springframework\\samples\\petclinic\\PetClinicIntegrationTests.java",
+            "type": "java_main_method",
+            "confidence": "high",
+            "reason": "Contains Java main method"
+          },
+          {
+            "path": "src\\test\\java\\org\\springframework\\samples\\petclinic\\PostgresIntegrationTests.java",
+            "type": "java_main_method",
+            "confidence": "high",
+            "reason": "Contains Java main method"
+          }
+        ],
+        "dependencies": [
+          {
+            "name": "org",
+            "type": "import",
+            "files": [
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Owner.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerController.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerRepository.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Pet.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetController.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetType.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetTypeFormatter.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetTypeRepository.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetValidator.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Visit.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\VisitController.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\PetClinicApplication.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\PetClinicRuntimeHints.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\system\\CacheConfiguration.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\system\\CrashController.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\system\\WebConfiguration.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\system\\WelcomeController.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\Specialty.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\Vet.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\VetController.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\VetRepository.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\model\\ValidatorTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\MySqlIntegrationTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\MysqlTestApplication.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerControllerTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetControllerTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetTypeFormatterTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetValidatorTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\VisitControllerTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\PetClinicIntegrationTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\PostgresIntegrationTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\service\\ClinicServiceTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\service\\EntityUtils.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\system\\CrashControllerIntegrationTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\system\\CrashControllerTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\system\\I18nPropertiesSyncTest.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\vet\\VetControllerTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\vet\\VetTests.java"
+            ],
+            "count": 38
+          },
+          {
+            "name": "java",
+            "type": "import",
+            "files": [
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\model\\BaseEntity.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Owner.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerController.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerRepository.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Pet.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetController.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetTypeFormatter.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetTypeRepository.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Visit.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\VisitController.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\system\\WebConfiguration.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\Vet.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\VetController.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\VetRepository.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\Vets.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\model\\ValidatorTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerControllerTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetControllerTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetTypeFormatterTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetValidatorTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\VisitControllerTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\PostgresIntegrationTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\service\\ClinicServiceTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\service\\EntityUtils.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\system\\CrashControllerIntegrationTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\system\\I18nPropertiesSyncTest.java"
+            ],
+            "count": 26
+          },
+          {
+            "name": "static",
+            "type": "import",
+            "files": [
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\model\\ValidatorTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\MySqlIntegrationTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerControllerTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetControllerTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetTypeFormatterTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetValidatorTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\VisitControllerTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\PetClinicIntegrationTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\PostgresIntegrationTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\service\\ClinicServiceTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\system\\CrashControllerIntegrationTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\system\\CrashControllerTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\system\\I18nPropertiesSyncTest.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\vet\\VetControllerTests.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\vet\\VetTests.java"
+            ],
+            "count": 15
+          },
+          {
+            "name": "jakarta",
+            "type": "import",
+            "files": [
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\model\\BaseEntity.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\model\\NamedEntity.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\model\\Person.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Owner.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerController.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Pet.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetController.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetType.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Visit.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\VisitController.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\Specialty.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\Vet.java",
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\Vets.java",
+              "src\\test\\java\\org\\springframework\\samples\\petclinic\\model\\ValidatorTests.java"
+            ],
+            "count": 14
+          },
+          {
+            "name": "javax",
+            "type": "import",
+            "files": [
+              "src\\main\\java\\org\\springframework\\samples\\petclinic\\system\\CacheConfiguration.java"
+            ],
+            "count": 1
+          }
+        ],
+        "complexity": [
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Owner.java",
+            "lines": 177,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 33,
+            "maintainabilityIndex": 53
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetController.java",
+            "lines": 184,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 25,
+            "maintainabilityIndex": 54
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\system\\I18nPropertiesSyncTest.java",
+            "lines": 139,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 24,
+            "maintainabilityIndex": 60
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerRepository.java",
+            "lines": 63,
+            "functions": 0,
+            "classes": 3,
+            "complexity": 18,
+            "maintainabilityIndex": 78
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerController.java",
+            "lines": 177,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 17,
+            "maintainabilityIndex": 56
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\PostgresIntegrationTests.java",
+            "lines": 151,
+            "functions": 0,
+            "classes": 2,
+            "complexity": 17,
+            "maintainabilityIndex": 60
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\service\\ClinicServiceTests.java",
+            "lines": 252,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 15,
+            "maintainabilityIndex": 49
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetValidator.java",
+            "lines": 65,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 12,
+            "maintainabilityIndex": 79
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\service\\EntityUtils.java",
+            "lines": 54,
+            "functions": 0,
+            "classes": 4,
+            "complexity": 12,
+            "maintainabilityIndex": 82
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetTypeFormatter.java",
+            "lines": 63,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 11,
+            "maintainabilityIndex": 79
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\VisitController.java",
+            "lines": 105,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 10,
+            "maintainabilityIndex": 69
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerControllerTests.java",
+            "lines": 252,
+            "functions": 0,
+            "classes": 2,
+            "complexity": 10,
+            "maintainabilityIndex": 50
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\system\\CacheConfiguration.java",
+            "lines": 54,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 9,
+            "maintainabilityIndex": 83
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\model\\NamedEntity.java",
+            "lines": 52,
+            "functions": 0,
+            "classes": 3,
+            "complexity": 8,
+            "maintainabilityIndex": 84
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\VetController.java",
+            "lines": 79,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 8,
+            "maintainabilityIndex": 75
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\VetRepository.java",
+            "lines": 59,
+            "functions": 0,
+            "classes": 3,
+            "complexity": 8,
+            "maintainabilityIndex": 82
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\Vets.java",
+            "lines": 44,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 8,
+            "maintainabilityIndex": 88
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetTypeFormatterTests.java",
+            "lines": 98,
+            "functions": 0,
+            "classes": 2,
+            "complexity": 8,
+            "maintainabilityIndex": 71
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\system\\CrashControllerIntegrationTests.java",
+            "lines": 102,
+            "functions": 0,
+            "classes": 2,
+            "complexity": 8,
+            "maintainabilityIndex": 70
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\vet\\VetControllerTests.java",
+            "lines": 101,
+            "functions": 0,
+            "classes": 2,
+            "complexity": 8,
+            "maintainabilityIndex": 70
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\model\\BaseEntity.java",
+            "lines": 52,
+            "functions": 0,
+            "classes": 3,
+            "complexity": 7,
+            "maintainabilityIndex": 84
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetTypeRepository.java",
+            "lines": 40,
+            "functions": 0,
+            "classes": 2,
+            "complexity": 7,
+            "maintainabilityIndex": 90
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Visit.java",
+            "lines": 69,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 7,
+            "maintainabilityIndex": 78
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\Specialty.java",
+            "lines": 33,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 7,
+            "maintainabilityIndex": 94
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\Vet.java",
+            "lines": 75,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 7,
+            "maintainabilityIndex": 77
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetControllerTests.java",
+            "lines": 212,
+            "functions": 0,
+            "classes": 4,
+            "complexity": 7,
+            "maintainabilityIndex": 55
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetValidatorTests.java",
+            "lines": 118,
+            "functions": 0,
+            "classes": 3,
+            "complexity": 7,
+            "maintainabilityIndex": 67
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\VisitControllerTests.java",
+            "lines": 95,
+            "functions": 0,
+            "classes": 2,
+            "complexity": 7,
+            "maintainabilityIndex": 72
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\PetClinicIntegrationTests.java",
+            "lines": 71,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 7,
+            "maintainabilityIndex": 78
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\system\\CrashControllerTests.java",
+            "lines": 42,
+            "functions": 0,
+            "classes": 2,
+            "complexity": 7,
+            "maintainabilityIndex": 89
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\model\\package-info.java",
+            "lines": 21,
+            "functions": 0,
+            "classes": 0,
+            "complexity": 6,
+            "maintainabilityIndex": 100
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\model\\Person.java",
+            "lines": 55,
+            "functions": 0,
+            "classes": 2,
+            "complexity": 6,
+            "maintainabilityIndex": 83
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\package-info.java",
+            "lines": 17,
+            "functions": 0,
+            "classes": 0,
+            "complexity": 6,
+            "maintainabilityIndex": 100
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Pet.java",
+            "lines": 86,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 6,
+            "maintainabilityIndex": 74
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetType.java",
+            "lines": 31,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 6,
+            "maintainabilityIndex": 95
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\package-info.java",
+            "lines": 17,
+            "functions": 0,
+            "classes": 0,
+            "complexity": 6,
+            "maintainabilityIndex": 100
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\PetClinicApplication.java",
+            "lines": 37,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 6,
+            "maintainabilityIndex": 92
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\PetClinicRuntimeHints.java",
+            "lines": 38,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 6,
+            "maintainabilityIndex": 91
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\system\\CrashController.java",
+            "lines": 38,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 6,
+            "maintainabilityIndex": 91
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\system\\package-info.java",
+            "lines": 17,
+            "functions": 0,
+            "classes": 0,
+            "complexity": 6,
+            "maintainabilityIndex": 100
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\system\\WebConfiguration.java",
+            "lines": 61,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 6,
+            "maintainabilityIndex": 81
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\system\\WelcomeController.java",
+            "lines": 31,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 6,
+            "maintainabilityIndex": 95
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\package-info.java",
+            "lines": 17,
+            "functions": 0,
+            "classes": 0,
+            "complexity": 6,
+            "maintainabilityIndex": 100
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\model\\ValidatorTests.java",
+            "lines": 61,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 6,
+            "maintainabilityIndex": 81
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\MySqlIntegrationTests.java",
+            "lines": 75,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 6,
+            "maintainabilityIndex": 77
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\MysqlTestApplication.java",
+            "lines": 48,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 6,
+            "maintainabilityIndex": 86
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\vet\\VetTests.java",
+            "lines": 42,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 6,
+            "maintainabilityIndex": 89
+          }
+        ],
+        "parsed": {
+          "pattern": "Layered MVC (Model\u2011View\u2011Controller) architecture with a clear separation of concerns: presentation (controllers & Thymeleaf views), service (business logic), repository (data access), domain (entities) and infrastructure (database, messaging).",
+          "components": [
+            {
+              "id": "ui",
+              "name": "User Interface (Thymeleaf templates & static assets)"
+            },
+            {
+              "id": "api",
+              "name": "API Layer (Spring MVC Controllers)"
+            },
+            {
+              "id": "service",
+              "name": "Service Layer (business use\u2011cases)"
+            },
+            {
+              "id": "repository",
+              "name": "Repository Layer (Spring Data JPA)"
+            },
+            {
+              "id": "domain",
+              "name": "Domain Model (JPA entities)"
+            },
+            {
+              "id": "db",
+              "name": "Database (H2 / MySQL / PostgreSQL)"
+            }
+          ],
+          "tech_stack": [
+            "Java",
+            "Spring Boot",
+            "Spring MVC",
+            "Spring Data JPA",
+            "Hibernate",
+            "Thymeleaf",
+            "H2",
+            "MySQL",
+            "PostgreSQL",
+            "JUnit 5",
+            "Maven"
+          ],
+          "summary_markdown": "The PetClinic sample follows a classic **Layered MVC** pattern. The **presentation layer** consists of Spring MVC controllers that handle HTTP requests and render Thymeleaf views. Controllers delegate to the **service layer**, which encapsulates business rules such as scheduling visits, managing owners, and handling pets. The service layer talks to the **repository layer**, which uses Spring Data JPA to perform CRUD operations on JPA\u2011annotated **domain entities**. These entities are persisted in a relational database (H2 for development, MySQL/PostgreSQL for production).\n\nAll layers are loosely coupled through interfaces, making the system easy to test (unit and integration tests) and to replace implementations (e.g., swapping the database). The architecture also benefits from Spring Boot\u2019s auto\u2011configuration, embedded servlet container, and dependency injection, providing a clean, maintainable code base that can be extended with additional features such as REST APIs or security modules.",
+          "diagrams": {
+            "c4_context": "graph TB\n  User[User] -->|Uses| WebApp[PetClinic Web Application]\n  Vet[Veterinarian] -->|Uses| WebApp\n  Owner[Pet Owner] -->|Uses| WebApp\n  WebApp -->|Reads/Writes| DB[(Relational Database)]\n  WebApp -->|Calls| External[External Services (e.g., Email, SMS)]",
+            "request_flow": "flowchart LR\n  Browser[Browser] -->|HTTP Request| API[Spring MVC Controller]\n  API -->|calls| Service[Service Layer]\n  Service -->|uses| Repo[Repository (Spring Data JPA)]\n  Repo -->|executes| DB[(Database)]\n  DB -->|returns data| Repo\n  Repo -->|returns| Service\n  Service -->|returns| API\n  API -->|renders| View[Thymeleaf Template]\n  View -->|HTML Response| Browser",
+            "dependency_graph": "graph LR\n  OwnerController --> OwnerService\n  OwnerService --> OwnerRepository\n  OwnerRepository --> OwnerEntity\n  OwnerEntity -->|maps to| DB[(Database)]\n  VetController --> VetService\n  VetService --> VetRepository\n  VetRepository --> VetEntity\n  VetEntity --> DB\n  PetController --> PetService\n  PetService --> PetRepository\n  PetRepository --> PetEntity\n  PetEntity --> DB\n  VisitController --> VisitService\n  VisitService --> VisitRepository\n  VisitRepository --> VisitEntity\n  VisitEntity --> DB"
+          }
+        }
+      }
+    },
+    "workflow": {
+      "agent": "workflow",
+      "status": "success",
+      "elapsed_time": 9.98399999999674,
+      "result": {
+        "workflow_guide": "docs\\WORKFLOWS.md",
+        "discovered_files": {
+          "pom.xml": "pom.xml",
+          "build.gradle": "build.gradle",
+          "github_workflow": ".github\\workflows\\deploy-and-test-cluster.yml",
+          "docker_compose": "docker-compose.yml",
+          "readme": "README.md"
+        },
+        "parsed": {
+          "workflows": [
+            {
+              "name": "Standard development workflow",
+              "steps": [
+                "Install dependencies",
+                "Run the application or tests",
+                "Commit and push changes"
+              ],
+              "diagrams": {
+                "sequence": "sequenceDiagram\n    participant Dev as Developer\n    participant App as Application\n    participant CI as CI Pipeline\n    Dev->>App: run / test\n    App-->>Dev: result\n    Dev->>CI: push\n    CI-->>Dev: pass/fail"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "hotspot": {
+      "agent": "hotspot",
+      "status": "success",
+      "elapsed_time": 25.14100000000326,
+      "result": {
+        "hotspots": [
+          {
+            "path": "pom.xml",
+            "risk_score": 50,
+            "commits": 332,
+            "authors": 35,
+            "change_frequency": 4.6942,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "HIGH"
+          },
+          {
+            "path": "readme.md",
+            "risk_score": 50,
+            "commits": 100,
+            "authors": 24,
+            "change_frequency": 0.1792,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "HIGH"
+          },
+          {
+            "path": "build.gradle",
+            "risk_score": 49,
+            "commits": 49,
+            "authors": 11,
+            "change_frequency": 0.6929,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          },
+          {
+            "path": "src/test/java/org/springframework/samples/petclinic/owner/OwnerControllerTests.java",
+            "risk_score": 41,
+            "commits": 32,
+            "authors": 10,
+            "change_frequency": 0.4522,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          },
+          {
+            "path": "src/test/java/org/springframework/samples/petclinic/service/ClinicServiceTests.java",
+            "risk_score": 41,
+            "commits": 32,
+            "authors": 13,
+            "change_frequency": 0.1823,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          },
+          {
+            "path": "src/main/java/org/springframework/samples/petclinic/owner/PetController.java",
+            "risk_score": 39,
+            "commits": 29,
+            "authors": 13,
+            "change_frequency": 1.0864,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          },
+          {
+            "path": "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java",
+            "risk_score": 38,
+            "commits": 27,
+            "authors": 11,
+            "change_frequency": 1.0115,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          },
+          {
+            "path": "src/main/java/org/springframework/samples/petclinic/owner/Owner.java",
+            "risk_score": 37,
+            "commits": 24,
+            "authors": 16,
+            "change_frequency": 0.1629,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          },
+          {
+            "path": "src/main/java/org/springframework/samples/petclinic/owner/VisitController.java",
+            "risk_score": 36,
+            "commits": 22,
+            "authors": 11,
+            "change_frequency": 0.8242,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          },
+          {
+            "path": "src/test/java/org/springframework/samples/petclinic/owner/PetControllerTests.java",
+            "risk_score": 36,
+            "commits": 22,
+            "authors": 11,
+            "change_frequency": 0.3109,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          },
+          {
+            "path": "src/test/java/org/springframework/samples/petclinic/model/ValidatorTests.java",
+            "risk_score": 36,
+            "commits": 22,
+            "authors": 10,
+            "change_frequency": 0.0635,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          },
+          {
+            "path": "src/main/java/org/springframework/samples/petclinic/owner/Pet.java",
+            "risk_score": 34,
+            "commits": 22,
+            "authors": 9,
+            "change_frequency": 0.1493,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          },
+          {
+            "path": "src/main/java/org/springframework/samples/petclinic/model/BaseEntity.java",
+            "risk_score": 34,
+            "commits": 18,
+            "authors": 11,
+            "change_frequency": 0.1049,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          },
+          {
+            "path": "README.md",
+            "risk_score": 33,
+            "commits": 20,
+            "authors": 9,
+            "change_frequency": 0.2837,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          },
+          {
+            "path": "src/test/java/org/springframework/samples/petclinic/vet/VetControllerTests.java",
+            "risk_score": 33,
+            "commits": 19,
+            "authors": 9,
+            "change_frequency": 0.2685,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          },
+          {
+            "path": "src/main/resources/application.properties",
+            "risk_score": 32,
+            "commits": 25,
+            "authors": 7,
+            "change_frequency": 0.9362,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          },
+          {
+            "path": ".gitignore",
+            "risk_score": 32,
+            "commits": 21,
+            "authors": 8,
+            "change_frequency": 0.0978,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          },
+          {
+            "path": "src/main/java/org/springframework/samples/petclinic/owner/OwnerRepository.java",
+            "risk_score": 32,
+            "commits": 18,
+            "authors": 9,
+            "change_frequency": 0.1025,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          },
+          {
+            "path": "src/main/java/org/springframework/samples/petclinic/PetClinicApplication.java",
+            "risk_score": 31,
+            "commits": 19,
+            "authors": 8,
+            "change_frequency": 0.0548,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          },
+          {
+            "path": ".mvn/wrapper/maven-wrapper.properties",
+            "risk_score": 31,
+            "commits": 16,
+            "authors": 9,
+            "change_frequency": 0.116,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          },
+          {
+            "path": "src/test/java/org/springframework/samples/petclinic/owner/VisitControllerTests.java",
+            "risk_score": 30,
+            "commits": 16,
+            "authors": 8,
+            "change_frequency": 0.2261,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          },
+          {
+            "path": "src/test/java/org/springframework/samples/petclinic/system/CrashControllerTests.java",
+            "risk_score": 30,
+            "commits": 16,
+            "authors": 8,
+            "change_frequency": 0.2261,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          },
+          {
+            "path": "src/main/java/org/springframework/samples/petclinic/model/NamedEntity.java",
+            "risk_score": 30,
+            "commits": 14,
+            "authors": 9,
+            "change_frequency": 0.1978,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          },
+          {
+            "path": "docker-compose.yml",
+            "risk_score": 29,
+            "commits": 21,
+            "authors": 6,
+            "change_frequency": 0.2979,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          },
+          {
+            "path": "src/main/resources/templates/fragments/layout.html",
+            "risk_score": 29,
+            "commits": 18,
+            "authors": 7,
+            "change_frequency": 0.052,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          },
+          {
+            "path": "src/main/java/org/springframework/samples/petclinic/model/Person.java",
+            "risk_score": 29,
+            "commits": 14,
+            "authors": 8,
+            "change_frequency": 0.095,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          },
+          {
+            "path": "src/test/java/org/springframework/samples/petclinic/MySqlIntegrationTests.java",
+            "risk_score": 27,
+            "commits": 17,
+            "authors": 6,
+            "change_frequency": 0.2412,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          },
+          {
+            "path": "src/test/java/org/springframework/samples/petclinic/owner/PetTypeFormatterTests.java",
+            "risk_score": 27,
+            "commits": 14,
+            "authors": 7,
+            "change_frequency": 0.0404,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          },
+          {
+            "path": "src/main/java/org/springframework/samples/petclinic/vet/Vet.java",
+            "risk_score": 27,
+            "commits": 13,
+            "authors": 7,
+            "change_frequency": 0.0757,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          },
+          {
+            "path": "gradle/wrapper/gradle-wrapper.properties",
+            "risk_score": 26,
+            "commits": 15,
+            "authors": 6,
+            "change_frequency": 0.0854,
+            "complexity": 0,
+            "lines": 0,
+            "maintainability_index": 100,
+            "risk_level": "MEDIUM"
+          }
+        ],
+        "git_hotspots": [
+          {
+            "path": "pom.xml",
+            "commits": 332,
+            "authors": 35,
+            "lastModified": "2026-03-07 13:11:35 +0100",
+            "changeFrequency": 4.694175937495178
+          },
+          {
+            "path": "readme.md",
+            "commits": 100,
+            "authors": 24,
+            "lastModified": "2024-11-05 08:24:50 +0000",
+            "changeFrequency": 0.1792489241609963
+          },
+          {
+            "path": "build.gradle",
+            "commits": 49,
+            "authors": 11,
+            "lastModified": "2026-03-07 13:28:04 +0100",
+            "changeFrequency": 0.6929272712919442
+          },
+          {
+            "path": "src/test/java/org/springframework/samples/petclinic/owner/OwnerControllerTests.java",
+            "commits": 32,
+            "authors": 10,
+            "lastModified": "2026-03-07 12:17:45 +0100",
+            "changeFrequency": 0.45221166302318966
+          },
+          {
+            "path": "src/test/java/org/springframework/samples/petclinic/service/ClinicServiceTests.java",
+            "commits": 32,
+            "authors": 13,
+            "lastModified": "2025-11-22 17:03:50 +0100",
+            "changeFrequency": 0.1822690345306032
+          },
+          {
+            "path": "src/main/java/org/springframework/samples/petclinic/owner/PetController.java",
+            "commits": 29,
+            "authors": 13,
+            "lastModified": "2026-04-20 13:59:39 +0100",
+            "changeFrequency": 1.0864450967056027
+          },
+          {
+            "path": "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java",
+            "commits": 27,
+            "authors": 11,
+            "lastModified": "2026-04-20 13:59:39 +0100",
+            "changeFrequency": 1.0115178486569405
+          },
+          {
+            "path": "src/main/resources/application.properties",
+            "commits": 25,
+            "authors": 7,
+            "lastModified": "2026-04-20 13:42:50 +0100",
+            "changeFrequency": 0.9361810127832441
+          },
+          {
+            "path": "src/main/java/org/springframework/samples/petclinic/owner/Owner.java",
+            "commits": 24,
+            "authors": 16,
+            "lastModified": "2025-12-20 22:32:00 +0100",
+            "changeFrequency": 0.1628921384427012
+          },
+          {
+            "path": "src/main/java/org/springframework/samples/petclinic/owner/VisitController.java",
+            "commits": 22,
+            "authors": 11,
+            "lastModified": "2026-04-20 13:59:39 +0100",
+            "changeFrequency": 0.8241997285352849
+          },
+          {
+            "path": "src/test/java/org/springframework/samples/petclinic/owner/PetControllerTests.java",
+            "commits": 22,
+            "authors": 11,
+            "lastModified": "2026-03-07 12:17:45 +0100",
+            "changeFrequency": 0.3108955183284429
+          },
+          {
+            "path": "src/main/java/org/springframework/samples/petclinic/owner/Pet.java",
+            "commits": 22,
+            "authors": 9,
+            "lastModified": "2025-12-20 22:32:00 +0100",
+            "changeFrequency": 0.1493177935724761
+          },
+          {
+            "path": "src/test/java/org/springframework/samples/petclinic/model/ValidatorTests.java",
+            "commits": 22,
+            "authors": 10,
+            "lastModified": "2025-06-04 22:00:56 +0200",
+            "changeFrequency": 0.06351039236354336
+          },
+          {
+            "path": "docker-compose.yml",
+            "commits": 21,
+            "authors": 6,
+            "lastModified": "2026-03-07 18:53:21 +0100",
+            "changeFrequency": 0.2979205113334789
+          },
+          {
+            "path": ".gitignore",
+            "commits": 21,
+            "authors": 8,
+            "lastModified": "2025-10-14 12:35:15 +0200",
+            "changeFrequency": 0.09776862346284121
+          },
+          {
+            "path": "README.md",
+            "commits": 20,
+            "authors": 9,
+            "lastModified": "2026-03-07 18:53:21 +0100",
+            "changeFrequency": 0.2837338203175989
+          },
+          {
+            "path": "src/test/java/org/springframework/samples/petclinic/vet/VetControllerTests.java",
+            "commits": 19,
+            "authors": 9,
+            "lastModified": "2026-03-07 12:17:45 +0100",
+            "changeFrequency": 0.2685006749200189
+          },
+          {
+            "path": "src/main/java/org/springframework/samples/petclinic/PetClinicApplication.java",
+            "commits": 19,
+            "authors": 8,
+            "lastModified": "2025-06-04 22:00:56 +0200",
+            "changeFrequency": 0.05484988431396926
+          },
+          {
+            "path": "src/main/java/org/springframework/samples/petclinic/model/BaseEntity.java",
+            "commits": 18,
+            "authors": 11,
+            "lastModified": "2025-11-26 14:22:44 +0000",
+            "changeFrequency": 0.10487379863456774
+          },
+          {
+            "path": "src/main/java/org/springframework/samples/petclinic/owner/OwnerRepository.java",
+            "commits": 18,
+            "authors": 9,
+            "lastModified": "2025-11-22 17:03:50 +0100",
+            "changeFrequency": 0.10252633192346429
+          },
+          {
+            "path": "src/main/resources/templates/fragments/layout.html",
+            "commits": 18,
+            "authors": 7,
+            "lastModified": "2025-06-04 21:46:07 +0200",
+            "changeFrequency": 0.05196150484823708
+          },
+          {
+            "path": "src/test/java/org/springframework/samples/petclinic/MySqlIntegrationTests.java",
+            "commits": 17,
+            "authors": 6,
+            "lastModified": "2026-03-07 18:53:21 +0100",
+            "changeFrequency": 0.2411737472699591
+          },
+          {
+            "path": "src/test/java/org/springframework/samples/petclinic/owner/VisitControllerTests.java",
+            "commits": 16,
+            "authors": 8,
+            "lastModified": "2026-03-07 12:17:45 +0100",
+            "changeFrequency": 0.22610583151159483
+          },
+          {
+            "path": "src/test/java/org/springframework/samples/petclinic/system/CrashControllerTests.java",
+            "commits": 16,
+            "authors": 8,
+            "lastModified": "2026-03-07 12:17:45 +0100",
+            "changeFrequency": 0.22610583151159483
+          },
+          {
+            "path": ".mvn/wrapper/maven-wrapper.properties",
+            "commits": 16,
+            "authors": 9,
+            "lastModified": "2025-12-30 09:36:54 +0100",
+            "changeFrequency": 0.11604712356808267
+          },
+          {
+            "path": "gradle/wrapper/gradle-wrapper.properties",
+            "commits": 15,
+            "authors": 6,
+            "lastModified": "2025-11-22 17:03:50 +0100",
+            "changeFrequency": 0.08543860993622024
+          },
+          {
+            "path": "src/main/java/org/springframework/samples/petclinic/model/NamedEntity.java",
+            "commits": 14,
+            "authors": 9,
+            "lastModified": "2026-03-07 12:17:45 +0100",
+            "changeFrequency": 0.1978426026050047
+          },
+          {
+            "path": "src/main/java/org/springframework/samples/petclinic/model/Person.java",
+            "commits": 14,
+            "authors": 8,
+            "lastModified": "2025-12-20 22:32:00 +0100",
+            "changeFrequency": 0.0950204140915757
+          },
+          {
+            "path": "src/test/java/org/springframework/samples/petclinic/owner/PetTypeFormatterTests.java",
+            "commits": 14,
+            "authors": 7,
+            "lastModified": "2025-06-04 22:00:56 +0200",
+            "changeFrequency": 0.04041570422999539
+          },
+          {
+            "path": "src/main/java/org/springframework/samples/petclinic/vet/Vet.java",
+            "commits": 13,
+            "authors": 7,
+            "lastModified": "2025-11-26 14:22:44 +0000",
+            "changeFrequency": 0.07574218789763573
+          }
+        ],
+        "complexity_metrics": [
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Owner.java",
+            "lines": 177,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 33,
+            "maintainabilityIndex": 53
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetController.java",
+            "lines": 184,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 25,
+            "maintainabilityIndex": 54
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\system\\I18nPropertiesSyncTest.java",
+            "lines": 139,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 24,
+            "maintainabilityIndex": 60
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerRepository.java",
+            "lines": 63,
+            "functions": 0,
+            "classes": 3,
+            "complexity": 18,
+            "maintainabilityIndex": 78
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerController.java",
+            "lines": 177,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 17,
+            "maintainabilityIndex": 56
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\PostgresIntegrationTests.java",
+            "lines": 151,
+            "functions": 0,
+            "classes": 2,
+            "complexity": 17,
+            "maintainabilityIndex": 60
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\service\\ClinicServiceTests.java",
+            "lines": 252,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 15,
+            "maintainabilityIndex": 49
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetValidator.java",
+            "lines": 65,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 12,
+            "maintainabilityIndex": 79
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\service\\EntityUtils.java",
+            "lines": 54,
+            "functions": 0,
+            "classes": 4,
+            "complexity": 12,
+            "maintainabilityIndex": 82
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetTypeFormatter.java",
+            "lines": 63,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 11,
+            "maintainabilityIndex": 79
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\VisitController.java",
+            "lines": 105,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 10,
+            "maintainabilityIndex": 69
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\OwnerControllerTests.java",
+            "lines": 252,
+            "functions": 0,
+            "classes": 2,
+            "complexity": 10,
+            "maintainabilityIndex": 50
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\system\\CacheConfiguration.java",
+            "lines": 54,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 9,
+            "maintainabilityIndex": 83
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\model\\NamedEntity.java",
+            "lines": 52,
+            "functions": 0,
+            "classes": 3,
+            "complexity": 8,
+            "maintainabilityIndex": 84
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\VetController.java",
+            "lines": 79,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 8,
+            "maintainabilityIndex": 75
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\VetRepository.java",
+            "lines": 59,
+            "functions": 0,
+            "classes": 3,
+            "complexity": 8,
+            "maintainabilityIndex": 82
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\Vets.java",
+            "lines": 44,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 8,
+            "maintainabilityIndex": 88
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetTypeFormatterTests.java",
+            "lines": 98,
+            "functions": 0,
+            "classes": 2,
+            "complexity": 8,
+            "maintainabilityIndex": 71
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\system\\CrashControllerIntegrationTests.java",
+            "lines": 102,
+            "functions": 0,
+            "classes": 2,
+            "complexity": 8,
+            "maintainabilityIndex": 70
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\vet\\VetControllerTests.java",
+            "lines": 101,
+            "functions": 0,
+            "classes": 2,
+            "complexity": 8,
+            "maintainabilityIndex": 70
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\model\\BaseEntity.java",
+            "lines": 52,
+            "functions": 0,
+            "classes": 3,
+            "complexity": 7,
+            "maintainabilityIndex": 84
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetTypeRepository.java",
+            "lines": 40,
+            "functions": 0,
+            "classes": 2,
+            "complexity": 7,
+            "maintainabilityIndex": 90
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Visit.java",
+            "lines": 69,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 7,
+            "maintainabilityIndex": 78
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\Specialty.java",
+            "lines": 33,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 7,
+            "maintainabilityIndex": 94
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\Vet.java",
+            "lines": 75,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 7,
+            "maintainabilityIndex": 77
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetControllerTests.java",
+            "lines": 212,
+            "functions": 0,
+            "classes": 4,
+            "complexity": 7,
+            "maintainabilityIndex": 55
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\PetValidatorTests.java",
+            "lines": 118,
+            "functions": 0,
+            "classes": 3,
+            "complexity": 7,
+            "maintainabilityIndex": 67
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\owner\\VisitControllerTests.java",
+            "lines": 95,
+            "functions": 0,
+            "classes": 2,
+            "complexity": 7,
+            "maintainabilityIndex": 72
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\PetClinicIntegrationTests.java",
+            "lines": 71,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 7,
+            "maintainabilityIndex": 78
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\system\\CrashControllerTests.java",
+            "lines": 42,
+            "functions": 0,
+            "classes": 2,
+            "complexity": 7,
+            "maintainabilityIndex": 89
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\model\\package-info.java",
+            "lines": 21,
+            "functions": 0,
+            "classes": 0,
+            "complexity": 6,
+            "maintainabilityIndex": 100
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\model\\Person.java",
+            "lines": 55,
+            "functions": 0,
+            "classes": 2,
+            "complexity": 6,
+            "maintainabilityIndex": 83
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\package-info.java",
+            "lines": 17,
+            "functions": 0,
+            "classes": 0,
+            "complexity": 6,
+            "maintainabilityIndex": 100
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\Pet.java",
+            "lines": 86,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 6,
+            "maintainabilityIndex": 74
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\owner\\PetType.java",
+            "lines": 31,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 6,
+            "maintainabilityIndex": 95
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\package-info.java",
+            "lines": 17,
+            "functions": 0,
+            "classes": 0,
+            "complexity": 6,
+            "maintainabilityIndex": 100
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\PetClinicApplication.java",
+            "lines": 37,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 6,
+            "maintainabilityIndex": 92
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\PetClinicRuntimeHints.java",
+            "lines": 38,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 6,
+            "maintainabilityIndex": 91
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\system\\CrashController.java",
+            "lines": 38,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 6,
+            "maintainabilityIndex": 91
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\system\\package-info.java",
+            "lines": 17,
+            "functions": 0,
+            "classes": 0,
+            "complexity": 6,
+            "maintainabilityIndex": 100
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\system\\WebConfiguration.java",
+            "lines": 61,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 6,
+            "maintainabilityIndex": 81
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\system\\WelcomeController.java",
+            "lines": 31,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 6,
+            "maintainabilityIndex": 95
+          },
+          {
+            "file": "src\\main\\java\\org\\springframework\\samples\\petclinic\\vet\\package-info.java",
+            "lines": 17,
+            "functions": 0,
+            "classes": 0,
+            "complexity": 6,
+            "maintainabilityIndex": 100
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\model\\ValidatorTests.java",
+            "lines": 61,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 6,
+            "maintainabilityIndex": 81
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\MySqlIntegrationTests.java",
+            "lines": 75,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 6,
+            "maintainabilityIndex": 77
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\MysqlTestApplication.java",
+            "lines": 48,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 6,
+            "maintainabilityIndex": 86
+          },
+          {
+            "file": "src\\test\\java\\org\\springframework\\samples\\petclinic\\vet\\VetTests.java",
+            "lines": 42,
+            "functions": 0,
+            "classes": 1,
+            "complexity": 6,
+            "maintainabilityIndex": 89
+          }
+        ],
+        "parsed": {
+          "hotspots": [
+            {
+              "file": "pom.xml",
+              "risk": "HIGH",
+              "advice": "Review changes carefully; high churn area."
+            },
+            {
+              "file": "readme.md",
+              "risk": "HIGH",
+              "advice": "Review changes carefully; high churn area."
+            },
+            {
+              "file": "build.gradle",
+              "risk": "MEDIUM",
+              "advice": "Review changes carefully; high churn area."
+            },
+            {
+              "file": "src/test/java/org/springframework/samples/petclinic/owner/OwnerControllerTests.java",
+              "risk": "MEDIUM",
+              "advice": "Review changes carefully; high churn area."
+            },
+            {
+              "file": "src/test/java/org/springframework/samples/petclinic/service/ClinicServiceTests.java",
+              "risk": "MEDIUM",
+              "advice": "Review changes carefully; high churn area."
+            },
+            {
+              "file": "src/main/java/org/springframework/samples/petclinic/owner/PetController.java",
+              "risk": "MEDIUM",
+              "advice": "Review changes carefully; high churn area."
+            },
+            {
+              "file": "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java",
+              "risk": "MEDIUM",
+              "advice": "Review changes carefully; high churn area."
+            },
+            {
+              "file": "src/main/java/org/springframework/samples/petclinic/owner/Owner.java",
+              "risk": "MEDIUM",
+              "advice": "Review changes carefully; high churn area."
+            },
+            {
+              "file": "src/main/java/org/springframework/samples/petclinic/owner/VisitController.java",
+              "risk": "MEDIUM",
+              "advice": "Review changes carefully; high churn area."
+            },
+            {
+              "file": "src/test/java/org/springframework/samples/petclinic/owner/PetControllerTests.java",
+              "risk": "MEDIUM",
+              "advice": "Review changes carefully; high churn area."
+            }
+          ],
+          "diagrams": {
+            "heatmap": "graph TB\n    subgraph Hotspots\n        F0[pom.xml<br/>HIGH]\n        F1[readme.md<br/>HIGH]\n        F2[build.gradle<br/>MEDIUM]\n        F3[OwnerControllerTests.java<br/>MEDIUM]\n        F4[ClinicServiceTests.java<br/>MEDIUM]\n        F5[PetController.java<br/>MEDIUM]\n        F6[OwnerController.java<br/>MEDIUM]\n        F7[Owner.java<br/>MEDIUM]\n        F8[VisitController.java<br/>MEDIUM]\n        F9[PetControllerTests.java<br/>MEDIUM]\n    end",
+            "timeline": "timeline\n    title Repository activity\n    section Analysis : Active development on hotspot files"
+          }
+        },
+        "refactoring_priorities": "generated\\refactoring_priorities.json"
+      }
+    },
+    "documentation": {
+      "agent": "DocumentationGenerator",
+      "status": "success",
+      "elapsed_time": 0.0,
+      "result": {
+        "onboarding_guide": "docs\\ONBOARDING.md"
+      }
+    }
+  },
+  "output_files": [
+    "docs\\ARCHITECTURE.md",
+    "generated\\dependency_graph.json",
+    "docs\\WORKFLOWS.md",
+    "generated\\refactoring_priorities.json",
+    "docs\\ONBOARDING.md"
+  ],
+  "output_dir": "docs"
+}
